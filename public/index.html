@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Fetcher</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #data { margin-top: 20px; white-space: pre; }
+    button { padding: 10px 15px; background: #007BFF; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Remote Data Fetcher</h1>
+  <button id="fetchButton">Fetch Data Now</button>
+  <div id="data">Loading...</div>
+
+  <script>
+    // Function to fetch and display data
+    async function fetchData() {
+      try {
+        const response = await fetch('/fetch-data');
+        const data = await response.json();
+        document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('data').textContent = 'Error: Failed to fetch data';
+        console.error('Error:', error);
+      }
+    }
+
+    // Fetch data immediately
+    fetchData();
+
+    // Auto-refresh every 10 seconds
+    setInterval(fetchData, 10000);
+
+    // Fetch data on button click
+    document.getElementById('fetchButton').addEventListener('click', fetchData);
+  </script>
+</body>
+</html>

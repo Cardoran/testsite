@@ -4,6 +4,4 @@ services:
     build: .
     ports:
       - "8080:80"
-    volumes:
-      - ./uploads:/usr/share/nginx/html/uploads
     container_name: my-website-container
