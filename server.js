@@ -9,7 +9,7 @@ app.use(express.static('public'));
 // Endpoint to fetch data from a remote site
 app.get('/fetch-data', async (req, res) => {
   try {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1');
+    const response = await axios.get('https://example.com/api/data'); //'https://example.com/api/data'  //'https://jsonplaceholder.typicode.com/posts/1'
     console.log('Fetched data:', response.data); // Log the data to the console
     res.json(response.data);
   } catch (error) {
