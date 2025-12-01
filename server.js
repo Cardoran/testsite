@@ -6,8 +6,9 @@ const PORT = 80;
 // Serve static files (e.g., HTML, CSS, JS)
 app.use(express.static('public'));
 
-// Endpoint to fetch data from a remote site
-app.get('/fetch-data', async (req, res) => { const dummyData = {
+// Endpoint to fetch dummy pie chart data
+app.get('/pie-chart-data', (req, res) => {
+  const dummyData = {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
     datasets: [{
       data: [30, 20, 15, 25, 10],
@@ -29,15 +30,6 @@ app.get('/fetch-data', async (req, res) => { const dummyData = {
     }]
   };
   res.json(dummyData);
-
-//   try {
-//     const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1'); //'https://example.com/api/data'  //'https://jsonplaceholder.typicode.com/posts/1'
-//     console.log('Fetched data:', response.data); // Log the data to the console
-//     res.json(response.data);
-//   } catch (error) {
-//     console.error('Error fetching data:', error.message);
-//     res.status(500).json({ error: 'Failed to fetch data' });
-//   }
 });
 
 // Start the server

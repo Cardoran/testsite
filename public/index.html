@@ -3,31 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Fetcher</title>
+  <title>Pie Chart Example</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
-    /* #data { margin-top: 20px; white-space: pre; background: #f4f4f4; padding: 10px; border-radius: 5px; } */
     .chart-container { width: 600px; height: 400px; margin: 20px auto; }
     button { padding: 10px 15px; background: #007BFF; color: white; border: none; cursor: pointer; }
   </style>
 </head>
 <body>
-  <h1>Remote Data Fetcher</h1>
+  <h1>Pie Chart Example</h1>
   <button id="fetchButton">Fetch Data Now</button>
-  <h2>Fetched Data:</h2>
-  <!-- <div id="data">Loading...</div> -->
   <div class="chart-container">
     <canvas id="pieChart"></canvas>
   </div>
 
+  <!-- Include Chart.js from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
-    // Function to fetch and display data
+    let pieChart;
+
+    // Function to fetch and plot data
     async function fetchData() {
       try {
-        const response = await fetch('/fetch-data');
+        const response = await fetch('/pie-chart-data');
         const data = await response.json();
+
         // Destroy previous chart if it exists
         if (pieChart) {
           pieChart.destroy();
@@ -54,18 +55,10 @@
       } catch (error) {
         console.error('Error:', error);
       }
-    //     document.getElementById('data').textContent = JSON.stringify(data, null, 2);
-    //   } catch (error) {
-    //     document.getElementById('data').textContent = 'Error: Failed to fetch data';
-    //     console.error('Error:', error);
-    //   }
     }
 
     // Fetch data immediately
     fetchData();
-
-    // Auto-refresh every 10 seconds
-    setInterval(fetchData, 10000);
 
     // Fetch data on button click
     document.getElementById('fetchButton').addEventListener('click', fetchData);
