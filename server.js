@@ -3,13 +3,14 @@ const axios = require('axios');
 const app = express();
 const PORT = 80;
 
-// Serve static files (HTML, CSS, JS)
+// Serve static files (e.g., HTML, CSS, JS)
 app.use(express.static('public'));
 
-// Endpoint to fetch data from the remote site
+// Endpoint to fetch data from a remote site
 app.get('/fetch-data', async (req, res) => {
   try {
-    const response = await axios.get('https://example.com/api/data'); // Replace with the target URL
+    const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1');
+    console.log('Fetched data:', response.data); // Log the data to the console
     res.json(response.data);
   } catch (error) {
     console.error('Error fetching data:', error.message);
