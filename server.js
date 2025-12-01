@@ -29,15 +29,15 @@ app.get('/fetch-data', async (req, res) => { const dummyData = {
     }]
   };
   res.json(dummyData);
-  
-  try {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1'); //'https://example.com/api/data'  //'https://jsonplaceholder.typicode.com/posts/1'
-    console.log('Fetched data:', response.data); // Log the data to the console
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error fetching data:', error.message);
-    res.status(500).json({ error: 'Failed to fetch data' });
-  }
+
+//   try {
+//     const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1'); //'https://example.com/api/data'  //'https://jsonplaceholder.typicode.com/posts/1'
+//     console.log('Fetched data:', response.data); // Log the data to the console
+//     res.json(response.data);
+//   } catch (error) {
+//     console.error('Error fetching data:', error.message);
+//     res.status(500).json({ error: 'Failed to fetch data' });
+//   }
 });
 
 // Start the server
