@@ -1,5 +1,5 @@
-const { DateTime } = require('luxon');
-const axios = require('axios');
+import { DateTime } from 'luxon';
+import axios from 'axios';
 
 // Function to fetch and process data
 export async function getPublicPower(country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") {
