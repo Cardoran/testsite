@@ -19,7 +19,8 @@
   "homepage": "https://github.com/Cardoran/testsite#readme",
   "dependencies": {
     "axios": "^1.13.2",
-    "express": "^5.2.0"
+    "express": "^5.2.0",
+    "luxon": "^3.7.2"
   },
   "type": "module"
 }
