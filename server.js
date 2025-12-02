@@ -29,8 +29,70 @@ app.get('/pie-chart-data', (req, res) => {
       borderWidth: 1
     }]
   };
+  console.log(getPublicPower());
   res.json(dummyData);
 });
+
+async function getPublicPower(country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") {
+    const url = `https://api.energy-charts.info/public_power?country=${country}&start=${start}&end=${end}`;
+    console.log(url);
+
+    let response;
+    try {
+        response = await axios.get(url);
+        if (response.status === 404) {
+            throw new Error("404: API endpoint not found");
+        }
+    } catch (error) {
+        throw new Error(`Failed to fetch data: ${error.message}`);
+    }
+
+    const data = response.data;
+    const time = data.unix_seconds.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
+
+    // Initialize the dictionary
+    const dataDict = { unix_seconds: time };
+    data.production_types.forEach(type => {
+        dataDict[type.name] = type.data;
+    });
+
+    // Calculate derived columns
+    dataDict["Cross border electricity export"] = dataDict["Cross border electricity trading"].map(x => x < 0 ? x : 0);
+    dataDict["Cross border electricity import"] = dataDict["Cross border electricity trading"].map(x => x > 0 ? x : 0);
+
+    // Sum arrays element-wise
+    const sumArrays = (arrays) => arrays[0].map((_, i) => arrays.reduce((sum, arr) => sum + arr[i], 0));
+
+    dataDict["Fossil oil and gas"] = sumArrays([
+        dataDict["Fossil gas"],
+        dataDict["Fossil coal-derived gas"],
+        dataDict["Fossil oil"]
+    ]);
+
+    dataDict["Fossil coal"] = sumArrays([
+        dataDict["Fossil brown coal / lignite"],
+        dataDict["Fossil hard coal"]
+    ]);
+
+    dataDict["Hydro"] = sumArrays([
+        dataDict["Hydro Run-of-River"],
+        dataDict["Hydro water reservoir"],
+        dataDict["Hydro pumped storage"]
+    ]);
+
+    dataDict["Wind"] = sumArrays([
+        dataDict["Wind onshore"],
+        dataDict["Wind offshore"]
+    ]);
+
+    dataDict["Waste, Biomass and Geothermal"] = sumArrays([
+        dataDict["Biomass"],
+        dataDict["Waste"],
+        dataDict["Geothermal"]
+    ]);
+
+    return dataDict;
+}
 
 // Start the server
 app.listen(PORT, () => {
