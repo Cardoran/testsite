@@ -91,7 +91,7 @@ async function getPublicPower(country = "de", start = "2025-03-16 00:00", end = 
         dataDict["Waste"],
         dataDict["Geothermal"]
     ]);
-
+    console.log(dataDict);
     return dataDict;
 }
 
