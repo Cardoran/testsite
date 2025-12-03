@@ -37,13 +37,14 @@
         // Create a new pie chart
         const ctx = document.getElementById('pieChart').getContext('2d');
         pieChart = new Chart(ctx, {
-          type: 'pie',
+          type: 'doughnut',
           data: data,
           options: {
             responsive: true,
+            animation: false,
             plugins: {
               legend: {
-                position: 'top',
+                position: 'right',
               },
               title: {
                 display: true,
