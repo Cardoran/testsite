@@ -50,6 +50,21 @@ app.get('/pie-chart-data', (req, res) => {
   res.json(dummyData);
 });
 
+const colors = [
+  'rgba(49, 163, 84, 1)',
+  'rgba(65, 105, 225, 1)',
+  'rgba(34, 139, 34, 1)',
+  'rgba(135, 206, 235, 1)',
+  'rgba(212, 212, 0, 1)',//
+  'rgba(230, 85, 13, 1)',
+  'rgba(140, 86, 75, 1)',//
+  'rgba(117, 107, 177, 1)',
+  'rgba(148, 103, 189, 1)',//
+  'rgba(99, 99, 99, 1)',
+  'rgba(105, 105, 105, 1)',
+  'rgba(227, 119, 194, 1)'//
+]
+
 // API endpoint to get the latest data
 app.get('/api/data', (req, res) => {
   if (latestData && row) {
@@ -58,20 +73,6 @@ app.get('/api/data', (req, res) => {
               "Other", "Other",
               "Cross border electricity import", "Cross border electricity import",
               "Fossil", "Fossil coal", "Fossil oil and gas"],
-      backgroundColor: [
-        'rgba(49, 163, 84, 1)',
-        'rgba(65, 105, 225, 1)',
-        'rgba(34, 139, 34, 1)',
-        'rgba(135, 206, 235, 1)',
-        'rgba(212, 212, 0, 1)',//
-        'rgba(230, 85, 13, 1)',
-        'rgba(140, 86, 75, 1)',//
-        'rgba(117, 107, 177, 1)',
-        'rgba(148, 103, 189, 1)',//
-        'rgba(99, 99, 99, 1)',
-        'rgba(105, 105, 105, 1)',
-        'rgba(227, 119, 194, 1)'//
-      ],
       datasets: [{
         data: [
           [
@@ -87,6 +88,7 @@ app.get('/api/data', (req, res) => {
             row["Fossil oil and gas"]
           ].reduce((a,b)=>a+b),0,0
         ],
+        backgroundColor: colors,
         weight: 1
       },
       {
@@ -104,6 +106,7 @@ app.get('/api/data', (req, res) => {
           row["Fossil coal"],
           row["Fossil oil and gas"]
         ],
+        backgroundColor: colors,
         weight: 0.67
       }]
     };
