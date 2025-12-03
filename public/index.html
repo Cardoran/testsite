@@ -39,27 +39,28 @@
         pieChart = new Chart(ctx, {
           type: 'doughnut',
           data: {
-            labels: ['Solar', 'Wind', 'Hydro'],
             datasets: [
             {
               data: [10, 40, 30],
+              labels: ['Solar', 'Wind', 'Hydro'],
               backgroundColor: [
                 'rgba(49, 163, 84, 1)',
                 'rgba(230, 85, 13, 1)',
                 'rgba(117, 107, 177, 1)',
                 'rgba(99, 99, 99, 1)'],
-              borderColor: [
-                'white',
-                'rgba(0,255,0,1)',
-                'white',
-                'white'
-              ],
+              // borderColor: [
+              //   'white',
+              //   'rgba(0,255,0,1)',
+              //   'white',
+              //   'white'
+              // ],
               weight: 1
             },
             {
               data: [10, 20, 30],
+              labels: ['Schmolar', 'Schmind', 'Schmydro'],
               backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-              weight: 0.5
+              weight: 0.67
             }]
           },
           options: {
