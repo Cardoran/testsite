@@ -95,6 +95,7 @@ app.get('/api/data', (req, res) => {
           'rgba(65, 105, 225, 1)',
           'rgba(34, 139, 34, 1)',
           'rgba(135, 206, 235, 1)',
+          'rgba(212, 212, 0, 1)',
           'rgba(140, 86, 75, 1)',
           'rgba(148, 103, 189, 1)',
           'rgba(105, 105, 105, 1)',
@@ -104,6 +105,7 @@ app.get('/api/data', (req, res) => {
         borderWidth: 1
       }]
     };
+    console.log(chartData);
     res.json(chartData);
   } else {
     res.status(503).send("No data available yet.");
