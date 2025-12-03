@@ -55,6 +55,20 @@ app.get('/api/data', (req, res) => {
   if (latestData && row) {
     const chartData = {
       labels: ["Renewables","Solar","Wind","Other","Hydro","Other","Import","Fossil"],
+      backgroundColor: [
+        'rgba(49, 163, 84, 1)',
+        'rgba(65, 105, 225, 1)',
+        'rgba(34, 139, 34, 1)',
+        'rgba(135, 206, 235, 1)',
+        'rgba(212, 212, 0, 1)',//
+        'rgba(230, 85, 13, 1)',
+        'rgba(140, 86, 75, 1)',//
+        'rgba(117, 107, 177, 1)',
+        'rgba(148, 103, 189, 1)',//
+        'rgba(99, 99, 99, 1)',
+        'rgba(105, 105, 105, 1)',
+        'rgba(227, 119, 194, 1)'//
+      ],
       datasets: [{
         data: [
           [
@@ -62,47 +76,32 @@ app.get('/api/data', (req, res) => {
             row["Waste, Biomass and Geothermal"],
             row["Wind"],
             row["Solar"]
-          ].reduce((a,b)=>a+b),
-          row["Others"],
-          row["Cross border electricity import"],
+          ].reduce((a,b)=>a+b),0,0,0,0,
+          row["Others"],0,
+          row["Cross border electricity import"],0,
           [
             row["Fossil coal"],
             row["Fossil oil and gas"]
-          ].reduce((a,b)=>a+b)
+          ].reduce((a,b)=>a+b),0,0
         ],
-        backgroundColor: [
-          'rgba(49, 163, 84, 1)',
-          'rgba(230, 85, 13, 1)',
-          'rgba(117, 107, 177, 1)',
-          'rgba(99, 99, 99, 1)'
-        ],
-        borderColor: 'rgba(255, 255, 255, 1)',
-        borderWidth: 1,
-        weight: [2,1,1,1]
+        weight: 1
       },
       {
         data: [
+          0,
           row["Hydro"],
           row["Waste, Biomass and Geothermal"],
           row["Wind"],
           row["Solar"],
+          0,
           row["Others"],
+          0,
           row["Cross border electricity import"],
+          0,
           row["Fossil coal"],
           row["Fossil oil and gas"]
         ],
-        backgroundColor: [
-          'rgba(65, 105, 225, 1)',
-          'rgba(34, 139, 34, 1)',
-          'rgba(135, 206, 235, 1)',
-          'rgba(212, 212, 0, 1)',
-          'rgba(140, 86, 75, 1)',
-          'rgba(148, 103, 189, 1)',
-          'rgba(105, 105, 105, 1)',
-          'rgba(227, 119, 194, 1)'
-        ],
-        borderColor: 'rgba(255, 255, 255, 1)',
-        borderWidth: 1
+        weight: 0.67
       }]
     };
     console.log(chartData);
