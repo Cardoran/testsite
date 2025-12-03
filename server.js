@@ -74,7 +74,7 @@ app.get('/api/data', (req, res) => {
           'rgba(49, 163, 84, 1)',
           'rgba(230, 85, 13, 1)',
           'rgba(117, 107, 177, 1)',
-          'rgba(99, 99, 9, 1)'
+          'rgba(99, 99, 99, 1)'
         ],
         borderColor: 'rgba(255, 255, 255, 1)',
         borderWidth: 1,

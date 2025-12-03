@@ -38,10 +38,15 @@
         const ctx = document.getElementById('pieChart').getContext('2d');
         pieChart = new Chart(ctx, {
           type: 'doughnut',
-          data: data,
+          data: {
+            labels: ['Solar', 'Wind', 'Hydro'],
+            datasets: [{
+              data: [10, 20, 30],
+              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            }]
+          },
           options: {
             responsive: true,
-            animation: false,
             plugins: {
               legend: {
                 position: 'right',
@@ -53,6 +58,24 @@
             }
           }
         });
+        // pieChart = new Chart(ctx, {
+        //   type: 'doughnut',
+        //   data: data,
+        //   options: {
+        //     responsive: true,
+        //     animation: false,
+        //     cutout: '50%',
+        //     plugins: {
+        //       legend: {
+        //         position: 'right',
+        //       },
+        //       title: {
+        //         display: true,
+        //         text: 'Dummy Data Pie Chart'
+        //       }
+        //     }
+        //   }
+        // });
       } catch (error) {
         console.error('Error:', error);
       }
