@@ -54,7 +54,10 @@ app.get('/pie-chart-data', (req, res) => {
 app.get('/api/data', (req, res) => {
   if (latestData && row) {
     const chartData = {
-      labels: ["Renewables","Solar","Wind","Other","Hydro","Other","Import","Fossil"],
+      labels: ["Renewables", "Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
+              "Other", "Other",
+              "Cross border electricity import", "Cross border electricity import",
+              "Fossil", "Fossil coal", "Fossil oil and gas"],
       backgroundColor: [
         'rgba(49, 163, 84, 1)',
         'rgba(65, 105, 225, 1)',
