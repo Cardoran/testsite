@@ -56,17 +56,7 @@ app.get('/api/data', (req, res) => {
     const chartData = {
       labels: ["Renewables","Solar","Wind","Other","Hydro","Other","Import","Fossil"],
       datasets: [{
-        data: [[0,0,0,0,
-          row["Hydro"],
-          row["Waste, Biomass and Geothermal"],
-          row["Wind"],
-          row["Solar"],
-          row["Others"],
-          row["Cross border electricity import"],
-          row["Fossil coal"],
-          row["Fossil oil and gas"]
-        ],
-        [row[
+        data: [
           [
             row["Hydro"],
             row["Waste, Biomass and Geothermal"],
@@ -79,12 +69,29 @@ app.get('/api/data', (req, res) => {
             row["Fossil coal"],
             row["Fossil oil and gas"]
           ].reduce((a,b)=>a+b)
-        ]]],
+        ],
         backgroundColor: [
           'rgba(49, 163, 84, 1)',
           'rgba(230, 85, 13, 1)',
           'rgba(117, 107, 177, 1)',
-          'rgba(99, 99, 9, 1)', //
+          'rgba(99, 99, 9, 1)'
+        ],
+        borderColor: 'rgba(255, 255, 255, 1)',
+        borderWidth: 1,
+        weight: [2,1,1,1]
+      },
+      {
+        data: [
+          row["Hydro"],
+          row["Waste, Biomass and Geothermal"],
+          row["Wind"],
+          row["Solar"],
+          row["Others"],
+          row["Cross border electricity import"],
+          row["Fossil coal"],
+          row["Fossil oil and gas"]
+        ],
+        backgroundColor: [
           'rgba(65, 105, 225, 1)',
           'rgba(34, 139, 34, 1)',
           'rgba(135, 206, 235, 1)',
@@ -94,8 +101,7 @@ app.get('/api/data', (req, res) => {
           'rgba(227, 119, 194, 1)'
         ],
         borderColor: 'rgba(255, 255, 255, 1)',
-        borderWidth: 1,
-        weight: [1,[2,1,1,1]]
+        borderWidth: 1
       }]
     };
     res.json(chartData);
