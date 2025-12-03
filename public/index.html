@@ -40,11 +40,7 @@
           type: 'doughnut',
           data: {
             labels: ['Solar', 'Wind', 'Hydro'],
-            datasets: [{
-              data: [10, 20, 30],
-              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-              weight: 1
-            },
+            datasets: [,
             {
               data: [10, 40, 30],
               backgroundColor: [
@@ -52,17 +48,17 @@
                 'rgba(230, 85, 13, 1)',
                 'rgba(117, 107, 177, 1)',
                 'rgba(99, 99, 99, 1)'],
-              borderWidth: 0,
+              borderColor: [
+                'transparent',
+                'rgba(0,255,0,1)',
+                'transparent',
+              ],
               weight: 0.5
             },
             {
-              data: [10, 40, 30],
-              backgroundColor: [
-                'transparent',
-                'rgba(230, 85, 13, 1)',
-                'transparent'],
-              borderWidth: 0,
-              weight: 0.5, // Outer ring thickness
+              data: [10, 20, 30],
+              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+              weight: 1
             }]
           },
           options: {
