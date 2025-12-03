@@ -6,7 +6,7 @@
   <title>Pie Chart Example</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
-    .chart-container { width: 600px; height: 400px; margin: 20px auto; }
+    .chart-container { width: 800px; height: 400px; margin: 20px auto; }
     button { padding: 10px 15px; background: #007BFF; color: white; border: none; cursor: pointer; }
   </style>
 </head>
@@ -43,6 +43,10 @@
             responsive: false,
             animation: true,
             plugins: {
+              legend: {
+                position: 'right',
+                filter: 
+              },
               title: {
                 display: true,
                 text: 'Power Generation'

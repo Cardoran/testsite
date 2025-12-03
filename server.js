@@ -80,29 +80,29 @@ app.get('/api/data', (req, res) => {
             row["Waste, Biomass and Geothermal"],
             row["Wind"],
             row["Solar"]
-          ].reduce((a,b)=>a+b),0,0,0,0,
+          ].reduce((a,b)=>a+b),//0,0,0,0,
           row["Others"],0,
-          row["Cross border electricity import"],0,
+          row["Cross border electricity import"],//0,
           [
             row["Fossil coal"],
             row["Fossil oil and gas"]
-          ].reduce((a,b)=>a+b),0,0
+          ].reduce((a,b)=>a+b)//,0,0
         ],
         backgroundColor: colors,
         weight: 1
       },
       {
         data: [
-          0,
+          // 0,
           row["Hydro"],
           row["Waste, Biomass and Geothermal"],
           row["Wind"],
           row["Solar"],
-          0,
+          // 0,
           row["Others"],
-          0,
+          // 0,
           row["Cross border electricity import"],
-          0,
+          // 0,
           row["Fossil coal"],
           row["Fossil oil and gas"]
         ],
