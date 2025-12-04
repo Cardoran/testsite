@@ -67,6 +67,7 @@
         const response = await fetch('/api/graphdata');
         const graphdata = await response.json();
 
+        console.log(graphChart)
         if (graphChart) {
           graphChart.destroy();
         }

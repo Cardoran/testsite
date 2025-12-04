@@ -95,3 +95,12 @@ export function getLastFullRow(df) {
         }
     }
 }
+
+
+export function newDate(days) {
+    return DateTime.now().plus({days}).toJSDate();
+  }
+  
+export function newDateString(days) {
+    return DateTime.now().plus({days}).toISO();
+  }

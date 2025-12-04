@@ -1,5 +1,5 @@
 import express from 'express';
-import { getPublicPower, getLastFullRow } from './energyCharts.js'; // Import the function
+import { getPublicPower, getLastFullRow, newDate, newDateString } from './energyCharts.js'; // Import the function
 
 // Global variable to store the latest data
 let latestData = null;
@@ -40,12 +40,8 @@ const colors = [
 
 // API endpoint to get the latest data
 app.get('/api/graphdata', (req, res) => {
-  console.log(latestData["unix_seconds"].forEach(
-    (element, index) => [element,latestData["Wind"][index]]
-))
-console.log(latestData["unix_seconds"].map(
-  (element, index) => [element,latestData["Wind"][index]]
-))
+  console.log(newDateString(1));
+  console.log(newDate(1));
   if (latestData && row) {
     const labels = ["Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
       "Other",
