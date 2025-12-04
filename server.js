@@ -1,5 +1,5 @@
 import express from 'express';
-import { getPublicPower, getLastFullRow, newDate, newDateString } from './energyCharts.js'; // Import the function
+import { getPublicPower, getLastFullRow } from './energyCharts.js'; // Import the function
 
 // Global variable to store the latest data
 let latestData = null;
