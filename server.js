@@ -49,13 +49,13 @@ app.get('/api/graphdata', (req, res) => {
       datasets: [{
         label: labels[0],
         data: [1,2,3,4,5],
-        backgroundColor: colors[0],
+        borderColor: colors[0],
         fill: true
       },
       {
         label: labels[1],
         data: [6,3,9,3,2],
-        backgroundColor: colors[1],
+        borderColor: colors[1],
         fill: true
       }]
     };
