@@ -55,7 +55,7 @@ app.get('/api/graphdata', (req, res) => {
       labels: xLabels,
       datasets: [{
         label: labels[0],
-        data: latestData.unix_seconds.forEach((element, index) => {
+        data: latestData["unix_seconds"].forEach((element, index) => {
           [element,latestData["Wind"][index]]
         }),
         borderColor: colors[0],
@@ -64,7 +64,7 @@ app.get('/api/graphdata', (req, res) => {
       },
       {
         label: labels[1],
-        data: latestData.unix_seconds.forEach((element, index) => {
+        data: latestData["unix_seconds"].forEach((element, index) => {
           [element,latestData["Solar"][index]]
         }),
         borderColor: colors[1],
