@@ -108,10 +108,13 @@
         console.error('Error:', error);
       }
     }
+    function fetchData() {
+      fetchPieData();
+      fetchGraphData();
+    }
 
     // Fetch data immediately
-    fetchPieData();
-    fetchGraphData();
+    fetchData();
 
     // Fetch data on button click
     document.getElementById('fetchButton').addEventListener('click', fetchData);
