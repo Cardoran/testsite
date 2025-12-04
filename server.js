@@ -9,7 +9,7 @@ let row = null;
 app.get('updateLatestData', (country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") => {
   console.log(start,end);
     try {
-        latestData = await getPublicPower(); // Use the imported function
+        latestData = getPublicPower(); // Use the imported function
         row = getLastFullRow(latestData);
         console.log("Data updated successfully.");
     } catch (error) {
