@@ -26,6 +26,9 @@
     let pieChart;
     // let legendChart;
     let graphChart;
+    Chart.Tooltip.positioners.cursor = function(chartElements, coordinates) {
+      return coordinates;
+    };
 
     // Function to fetch and plot data
     async function fetchPieData() {
@@ -79,10 +82,10 @@
           options: {
             responsive: true,
             radius: 0,
-            plugins: {
-              tooltip: {
-                mode: 'index'
-              },
+            tooltips: {
+              mode: 'index',
+              position: 'cursor',
+              intersect: false
             },
             interaction: {
               mode: 'nearest',
@@ -92,6 +95,7 @@
             scales: {
               x: {
                 ticks: {
+                  autoSkip: false,
                   callback: function (value, index, values) {
                     // Only show label if it's the first timestamp of the day
                     // console.log(value,index,values[index]);
