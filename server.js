@@ -42,28 +42,31 @@ const colors = [
 app.get('/api/graphdata', (req, res) => {
   console.log(newDateString(1));
   console.log(newDate(1));
+  console.log(latestData.unix_seconds[0]);
   if (latestData && row) {
     const labels = ["Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
       "Other",
       "Cross border electricity import",
       "Fossil coal", "Fossil oil and gas"]
-    const xLabels = latestData.unix_seconds.map(ts => new Date(ts * 1000).toISOString().split('T')[0]);
+    const xLabels = latestData.unix_seconds.map(ts => new Date(ts * 1000));//.toISOString().split('T')[0]);
     const data = {
       labels: xLabels,
       datasets: [{
         label: labels[0],
-        data: latestData["unix_seconds"].map(
-            (element, index) => [element,latestData["Wind"][index]]
-        ),
+        data: latestData.Wind,
+        // latestData["unix_seconds"].map(
+        //     (element, index) => [element,latestData["Wind"][index]]
+        // ),
         borderColor: colors[0],
         backgroundColor: colors[0],
         fill: true
       },
       {
         label: labels[1],
-        data: latestData["unix_seconds"].map(
-            (element, index) => [element,latestData["Solar"][index]]
-        ),
+        data: latestData.Solar,
+        // latestData["unix_seconds"].map(
+        //     (element, index) => [element,latestData["Solar"][index]]
+        // ),
         borderColor: colors[1],
         backgroundColor: colors[1],
         fill: true
