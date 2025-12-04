@@ -78,6 +78,7 @@
           data: graphdata,
           options: {
             responsive: true,
+            radius: 0,
             plugins: {
               tooltip: {
                 mode: 'index'
@@ -90,11 +91,14 @@
             },
             scales: {
               x: {
-                // type: 'time',
-                // time: {
-                //   // Luxon format string
-                //   tooltipFormat: 'DD T'
-                // },
+                ticks: {
+                  callback: (value, index, values) => {
+                    // Only show label if it's the first timestamp of the day
+                    const date = new Date(value * 1000);
+                    const day = date.toISOString().split('T')[0];
+                    return index === 0 || day !== new Date(values[index - 1].value * 1000).toISOString().split('T')[0] ? day : '';
+                  }
+                },
                 title: {
                   display: true,
                   text: 'day'
