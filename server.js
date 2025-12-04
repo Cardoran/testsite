@@ -45,32 +45,28 @@ app.get('/api/graphdata', (req, res) => {
       "Other",
       "Cross border electricity import",
       "Fossil coal", "Fossil oil and gas"]
-    const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
+    const xLabels = [
+        '1 day',
+        '2 days',
+        '3 days',
+        '4 days'
     ]
     const data = {
-      labels: months,
+      labels: xLabels,
       datasets: [{
         label: labels[0],
-        data: [1,2,3,4,5],
+        data: latestData["unix_seconds"].array.forEach(element, index => {
+          [element,latestData["Wind"][index]]
+        }),
         borderColor: colors[0],
         backgroundColor: colors[0],
         fill: true
       },
       {
         label: labels[1],
-        data: [6,3,9,3,2],
+        data: latestData["unix_seconds"].array.forEach(element, index => {
+          [element,latestData["Solar"][index]]
+        }),
         borderColor: colors[1],
         backgroundColor: colors[1],
         fill: true
