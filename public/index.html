@@ -28,22 +28,14 @@
     let graphChart;
 
     // Function to fetch and plot data
-    async function fetchData() {
+    async function fetchPieData() {
       try {
         const response = await fetch('/api/piedata');
         const piedata = await response.json();
-        const response2 = await fetch('/api/graphdata');
-        const graphdata = await response2.json();
 
         // Destroy previous chart if it exists
         if (pieChart) {
           pieChart.destroy();
-        }
-        // if (legendChart) {
-        //   legendChart.destroy();
-        // }
-        if (graphChart) {
-          graphChart.destroy();
         }
 
         // Create a new pie chart
@@ -66,6 +58,19 @@
             }
           }
         });
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+    async function fetchGraphData() {
+      try {
+        const response = await fetch('/api/graphdata');
+        const graphdata = await response.json();
+
+        if (graphChart) {
+          graphChart.destroy();
+        }
+
         const ctx2 = document.getElementById('graphChart').getContext('2d');
         graphChart = new Chart(ctx2, {
           type: 'line',
@@ -105,7 +110,8 @@
     }
 
     // Fetch data immediately
-    fetchData();
+    fetchPieData();
+    fetchGraphData();
 
     // Fetch data on button click
     document.getElementById('fetchButton').addEventListener('click', fetchData);
