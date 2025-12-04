@@ -94,14 +94,14 @@
                 ticks: {
                   callback: (value, index, values) => {
                     // Only show label if it's the first timestamp of the day
-                    const date = new Date(value * 1000);
-                    const day = date.toISOString().split('T')[0];
-                    return index === 0 || day !== new Date(values[index - 1].value * 1000).toISOString().split('T')[0] ? day : '';
+                    const date = new Date(value);
+                    const day = date;
+                    return index === 0 || day !== new Date(values[index - 1].value) ? day : '';
                   }
                 },
                 title: {
                   display: true,
-                  text: 'day'
+                  text: 'time'
                 }
               },
               y: {
