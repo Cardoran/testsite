@@ -64,7 +64,7 @@ app.get('/api/graphdata', (req, res) => {
       },
       {
         label: labels[1],
-        data: latestData["unix_seconds"].array.forEach(element, index => {
+        data: latestData["unix_seconds"].array.forEach((element, index) => {
           [element,latestData["Solar"][index]]
         }),
         borderColor: colors[1],
