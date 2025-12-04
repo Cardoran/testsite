@@ -54,7 +54,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
             dataDict["Geothermal"]
         ]);
 
-        console.log(dataDict);
+        // console.log(dataDict);
         return dataDict;
     } catch (error) {
         console.error(`Error fetching data: ${error.message}`);
