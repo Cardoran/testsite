@@ -15,7 +15,7 @@
   <button id="fetchButton">Fetch Data Now</button>
   <div class="chart-container">
     <canvas id="pieChart"></canvas>
-    <canvas id="legendChart"></canvas>
+    <!-- <canvas id="legendChart"></canvas> -->
     <canvas id="graphChart"></canvas>
   </div>
 
@@ -24,7 +24,7 @@
 
   <script>
     let pieChart;
-    let legendChart;
+    // let legendChart;
     let graphChart;
 
     // Function to fetch and plot data
@@ -32,8 +32,8 @@
       try {
         const response = await fetch('/api/piedata');
         const piedata = await response.json();
-        response = await fetch('/api/graphdata');
-        const graphdata = await response.json();
+        const response2 = await fetch('/api/graphdata');
+        const graphdata = await response2.json();
 
         // Destroy previous chart if it exists
         if (pieChart) {
