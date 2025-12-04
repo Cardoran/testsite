@@ -14,7 +14,7 @@ let latestData = null;
 let row = null;
 
 // Function to update the latest data
-app.get('updateLatestData', (country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") => {
+app.get('/updateLatestData', (country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") => {
   console.log(start,end);
     try {
         latestData = getPublicPower(); // Use the imported function
