@@ -75,35 +75,34 @@
         graphChart = new Chart(ctx2, {
           type: 'line',
           data: graphdata,
-          options: genericOptions
-          // options: {
-          //   responsive: true,
-          //   plugins: {
-          //     tooltip: {
-          //       mode: 'index'
-          //     },
-          //   },
-          //   interaction: {
-          //     mode: 'nearest',
-          //     axis: 'x',
-          //     intersect: false
-          //   },
-          //   scales: {
-          //     x: {
-          //       title: {
-          //         display: true,
-          //         text: 'day'
-          //       }
-          //     },
-          //     y: {
-          //       stacked: true,
-          //       title: {
-          //         display: true,
-          //         text: 'power'
-          //       }
-          //     }
-          //   }
-          // }
+          options: {
+            responsive: true,
+            plugins: {
+              tooltip: {
+                mode: 'index'
+              },
+            },
+            interaction: {
+              mode: 'nearest',
+              axis: 'x',
+              intersect: false
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'day'
+                }
+              },
+              y: {
+                stacked: true,
+                title: {
+                  display: true,
+                  text: 'power'
+                }
+              }
+            }
+          }
         });
       } catch (error) {
         console.error('Error:', error);
