@@ -83,6 +83,20 @@
               tooltip: {
                 mode: 'index'
               },
+              scales: {
+                x: {
+                  ticks:{
+                    callback: (value, index, values) => {
+                    // Only show label if it's the first timestamp of the day
+                    console.log(value,index,values);
+                    return values[index].value;
+                    // const date = new Date(value);
+                    // const day = date;
+                    // return index === 0 || day !== new Date(values[index - 1].value) ? day : '';
+                  }
+                  }
+                }
+              }
             },
             interaction: {
               mode: 'nearest',
@@ -91,16 +105,16 @@
             },
             scales: {
               x: {
-                ticks: {
-                  callback: (value, index, values) => {
-                    // Only show label if it's the first timestamp of the day
-                    console.log(value,index,values);
-                    return values[index].value;
-                    // const date = new Date(value);
-                    // const day = date;
-                    // return index === 0 || day !== new Date(values[index - 1].value) ? day : '';
-                  }
-                },
+                // ticks: {
+                //   callback: (value, index, values) => {
+                //     // Only show label if it's the first timestamp of the day
+                //     console.log(value,index,values);
+                //     return values[index].value;
+                //     // const date = new Date(value);
+                //     // const day = date;
+                //     // return index === 0 || day !== new Date(values[index - 1].value) ? day : '';
+                //   }
+                // },
                 title: {
                   display: true,
                   text: 'time'
