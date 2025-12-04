@@ -1,6 +1,14 @@
 import express from 'express';
 import { getPublicPower, getLastFullRow } from './energyCharts.js'; // Import the function
 
+// Initialize Express.js server
+const app = express();
+const PORT = 80;
+
+// Serve static files (e.g., HTML, CSS, JS)
+app.use(express.static('public'));
+
+
 // Global variable to store the latest data
 let latestData = null;
 let row = null;
@@ -16,14 +24,6 @@ app.get('updateLatestData', (country = "de", start = "2025-03-16 00:00", end = "
         console.error("Failed to update data:", error.message);
     }
 });
-
-// Initialize Express.js server
-const app = express();
-const PORT = 80;
-
-// Serve static files (e.g., HTML, CSS, JS)
-app.use(express.static('public'));
-
 
 // API endpoint to get the latest data
 app.get('/api/graphdata', (req, res) => {
