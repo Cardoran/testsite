@@ -41,6 +41,8 @@ const colors = [
 // API endpoint to get the latest data
 app.get('/api/graphdata', (req, res) => {
   if (latestData && row) {
+    console.log(latestData.unix_seconds);
+    console.log(latestData["unix_seconds"]);
     const labels = ["Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
       "Other",
       "Cross border electricity import",
