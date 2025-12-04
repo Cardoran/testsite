@@ -45,7 +45,22 @@ app.get('/api/graphdata', (req, res) => {
       "Other",
       "Cross border electricity import",
       "Fossil coal", "Fossil oil and gas"]
+    const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ]
     const data = {
+      labels: months,
       datasets: [{
         label: labels[0],
         data: [1,2,3,4,5],

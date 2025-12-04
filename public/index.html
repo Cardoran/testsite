@@ -71,24 +71,9 @@
           graphChart.destroy();
         }
 
-        const labels = [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December'
-        ]
         const ctx2 = document.getElementById('graphChart').getContext('2d');
         graphChart = new Chart(ctx2, {
           type: 'line',
-          labels: labels,
           data: graphdata,
           options: {
             responsive: true,
