@@ -80,7 +80,7 @@ app.get('/api/graphdata', (req, res) => {
       // }]
     };
     data.datasets.forEach(element => {element.data = latestData["unix_seconds"].map(
-          (el, idx) => [el,latestData[element][idx]]
+          (el, idx) => [el,latestData[element.label][idx]]
       );})
     console.log(data);
     res.json(data);
