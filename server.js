@@ -6,7 +6,8 @@ let latestData = null;
 let row = null;
 
 // Function to update the latest data
-async function updateLatestData() {
+async function updateLatestData(country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") {
+  console.log(start,end);
     try {
         latestData = await getPublicPower(); // Use the imported function
         row = getLastFullRow(latestData);
@@ -132,9 +133,4 @@ app.get('/api/piedata', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 
-    // Update data immediately
-    updateLatestData();
-
-    // Update data every 10 seconds
-    setInterval(updateLatestData, 10000);
 });
