@@ -53,9 +53,9 @@ app.get('/api/graphdata', (req, res) => {
       labels: xLabels,
       datasets: 
         labels.map((element,index) => ({label: element,
-            data: latestData["unix_seconds"].map(
-                (el, idx) => [el,latestData[element][idx]]
-            ),
+            // data: latestData["unix_seconds"].map(
+            //     (el, idx) => [el,latestData[element][idx]]
+            // ),
             borderColor: colors[index],
             backgroundColor: colors[index],
             fill: true})
@@ -79,6 +79,9 @@ app.get('/api/graphdata', (req, res) => {
       //   fill: true
       // }]
     };
+    data.datasets.forEach(element => {element.data = latestData["unix_seconds"].map(
+          (el, idx) => [el,latestData[element][idx]]
+      );})
     console.log(data);
     res.json(data);
   } else {
