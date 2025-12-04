@@ -23,31 +23,30 @@ const PORT = 80;
 // Serve static files (e.g., HTML, CSS, JS)
 app.use(express.static('public'));
 
-const colors = [
-  'rgba(49, 163, 84, 1)',
-  'rgba(65, 105, 225, 1)',
-  'rgba(34, 139, 34, 1)',
-  'rgba(135, 206, 235, 1)',
-  'rgba(212, 212, 0, 1)',//
-  'rgba(230, 85, 13, 1)',
-  'rgba(140, 86, 75, 1)',//
-  'rgba(117, 107, 177, 1)',
-  'rgba(148, 103, 189, 1)',//
-  'rgba(99, 99, 99, 1)',
-  'rgba(105, 105, 105, 1)',
-  'rgba(227, 119, 194, 1)'//
-]
 
 // API endpoint to get the latest data
 app.get('/api/graphdata', (req, res) => {
   // console.log(newDateString(1));
   // console.log(newDate(1));
   // console.log(latestData.unix_seconds[0]);
-  if (latestData && row) {
-    const labels = ["Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
-      "Other",
-      "Cross border electricity import",
-      "Fossil coal", "Fossil oil and gas"]
+  if (latestData && row) {  
+    const colors = [
+      'rgba(31, 119, 180, 1)',
+      'rgba(0, 255, 255, 1)',//
+      'rgba(148, 103, 189, 1)',
+      'rgba(140, 86, 75, 1)',
+      'rgba(105, 105, 105, 1)',
+      'rgba(227, 119, 194, 1)',
+      'rgba(65, 105, 225, 1)',
+      'rgba(34, 139, 34, 1)',
+      'rgba(135, 206, 235, 1)',
+      'rgba(191, 191, 0, 1)'
+    ]
+    const labels = ["Cross border electricity export", "Hydro pumped storage consumption",
+      "Cross border electricity import", "Others", 
+      "Fossil coal","Fossil oil and gas",
+      "Hydro","Waste, Biomass and Geothermal","Wind","Solar"
+    ]
     const xLabels = latestData.unix_seconds.map(ts => new Date(ts * 1000).toISOString().substring(0,16).replace("T"," "));
     const data = {
       labels: xLabels,
@@ -89,6 +88,20 @@ app.get('/api/graphdata', (req, res) => {
   }
 });
 app.get('/api/piedata', (req, res) => {
+  const colors = [
+    'rgba(49, 163, 84, 1)',
+    'rgba(65, 105, 225, 1)',
+    'rgba(34, 139, 34, 1)',
+    'rgba(135, 206, 235, 1)',
+    'rgba(212, 212, 0, 1)',//
+    'rgba(230, 85, 13, 1)',
+    'rgba(140, 86, 75, 1)',//
+    'rgba(117, 107, 177, 1)',
+    'rgba(148, 103, 189, 1)',//
+    'rgba(99, 99, 99, 1)',
+    'rgba(105, 105, 105, 1)',
+    'rgba(227, 119, 194, 1)'//
+  ]
   if (latestData && row) {
     const chartData = {
       labels: ["Renewables", "Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
