@@ -92,7 +92,7 @@
             scales: {
               x: {
                 ticks: {
-                  callback: (value, index) => {
+                  callback: (value, index, values) => {
                     // Only show label if it's the first timestamp of the day
                     console.log(value,index);
                     return this.getLabelForValue(value);
