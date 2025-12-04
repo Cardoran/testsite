@@ -72,9 +72,6 @@
           graphChart.destroy();
         }
 
-        Chart.Tooltip.positioners.cursor = function(chartElements, coordinates) {
-          return coordinates;
-        };
         const ctx2 = document.getElementById('graphChart').getContext('2d');
         graphChart = new Chart(ctx2, {
           type: 'line',
@@ -82,11 +79,6 @@
           options: {
             responsive: true,
             radius: 0,
-            tooltips: {
-              mode: 'index',
-              position: 'cursor',
-              intersect: false
-            },
             interaction: {
               mode: 'nearest',
               axis: 'x',
@@ -113,6 +105,9 @@
                   display: true,
                   text: 'power'
                 }
+              },
+              grid: {
+                display: false
               }
             }
           }
