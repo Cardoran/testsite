@@ -23,33 +23,6 @@ const PORT = 80;
 // Serve static files (e.g., HTML, CSS, JS)
 app.use(express.static('public'));
 
-// Endpoint to fetch dummy pie chart data
-app.get('/pie-chart-data', (req, res) => {
-  const dummyData = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
-    datasets: [{
-      data: [30, 20, 15, 25, 10],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.7)',
-        'rgba(54, 162, 235, 0.7)',
-        'rgba(255, 206, 86, 0.7)',
-        'rgba(75, 192, 192, 0.7)',
-        'rgba(153, 102, 255, 0.7)'
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)'
-      ],
-      borderWidth: 1
-    }]
-  };
-  console.log(getPublicPower());
-  res.json(dummyData);
-});
-
 const colors = [
   'rgba(49, 163, 84, 1)',
   'rgba(65, 105, 225, 1)',
@@ -66,7 +39,35 @@ const colors = [
 ]
 
 // API endpoint to get the latest data
-app.get('/api/data', (req, res) => {
+app.get('/api/graphdata', (req, res) => {
+  if (latestData && row) {
+    const labels = ["Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
+      "Other",
+      "Cross border electricity import",
+      "Fossil coal", "Fossil oil and gas"]
+    const data = {
+      datasets: [{
+        label: labels[0],
+        data: [[1,2,3,4,5],[1,2,6,4,7]
+        ],
+        backgroundColor: colors[0],
+        fill: true
+      },
+      {
+        label: labels[1],
+        data: [[1,2,3,4,5],[6,3,9,3,2]
+        ],
+        backgroundColor: colors[1],
+        fill: true
+      }]
+    };
+    console.log(data);
+    res.json(data);
+  } else {
+    res.status(503).send("No data available yet.");
+  }
+});
+app.get('/api/piedata', (req, res) => {
   if (latestData && row) {
     const chartData = {
       labels: ["Renewables", "Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",

@@ -54,6 +54,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
             dataDict["Geothermal"]
         ]);
 
+        console.log(dataDict);
         return dataDict;
     } catch (error) {
         console.error(`Error fetching data: ${error.message}`);
@@ -89,7 +90,7 @@ export function getLastFullRow(df) {
                 throw new Error("No valid row found (all rows contain NaN).");
             }
         } else {
-            console.log(row);
+            // console.log(row);
             return row; // Return the valid row
         }
     }
