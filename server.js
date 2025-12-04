@@ -26,9 +26,6 @@ app.use(express.static('public'));
 
 // API endpoint to get the latest data
 app.get('/api/graphdata', (req, res) => {
-  // console.log(newDateString(1));
-  // console.log(newDate(1));
-  // console.log(latestData.unix_seconds[0]);
   if (latestData && row) {  
     const colors = [
       'rgba(31, 119, 180, 1)',
@@ -59,28 +56,7 @@ app.get('/api/graphdata', (req, res) => {
             backgroundColor: colors[index],
             fill: true})
         )
-        // [{
-      //   label: labels[0],
-      //   data: latestData["unix_seconds"].map(
-      //       (element, index) => [element,latestData["Wind"][index]]
-      //   ),
-      //   borderColor: colors[0],
-      //   backgroundColor: colors[0],
-      //   fill: true
-      // },
-      // {
-      //   label: labels[1],
-      //   data: latestData["unix_seconds"].map(
-      //       (element, index) => [element,latestData["Solar"][index]]
-      //   ),
-      //   borderColor: colors[1],
-      //   backgroundColor: colors[1],
-      //   fill: true
-      // }]
     };
-    // data.datasets.forEach(element => {element.data = latestData["unix_seconds"].map(
-    //       (el, idx) => console.log(latestData[element.label][0])//[el,latestData[element.label][idx]]
-    //   );})
     console.log(data);
     res.json(data);
   } else {
