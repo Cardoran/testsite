@@ -94,8 +94,9 @@
                 ticks: {
                   callback: function (value, index, values) {
                     // Only show label if it's the first timestamp of the day
-                    console.log(value,index,values[index]);
+                    // console.log(value,index,values[index]);
                     date = this.getLabelForValue(value).split('T');
+                    console.log(value,date[0],date[1]);
                     return date[1] == "00:00:00.000Z" ? date[0] : '';
                     // const date = new Date(value);
                     // const day = date;
