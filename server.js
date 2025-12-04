@@ -40,35 +40,34 @@ const colors = [
 
 // API endpoint to get the latest data
 app.get('/api/graphdata', (req, res) => {
+  console.log(latestData["unix_seconds"].forEach(
+    (element, index) => [element,latestData["Wind"][index]]
+))
+console.log(latestData["unix_seconds"].map(
+  (element, index) => [element,latestData["Wind"][index]]
+))
   if (latestData && row) {
-    console.log(latestData.unix_seconds);
-    console.log(latestData["unix_seconds"]);
     const labels = ["Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
       "Other",
       "Cross border electricity import",
       "Fossil coal", "Fossil oil and gas"]
-    const xLabels = [
-        '1 day',
-        '2 days',
-        '3 days',
-        '4 days'
-    ]
+    const xLabels = latestData.unix_seconds.map(ts => new Date(ts * 1000).toISOString().split('T')[0]);
     const data = {
       labels: xLabels,
       datasets: [{
         label: labels[0],
-        data: latestData["unix_seconds"].forEach((element, index) => {
-          [element,latestData["Wind"][index]]
-        }),
+        data: latestData["unix_seconds"].map(
+            (element, index) => [element,latestData["Wind"][index]]
+        ),
         borderColor: colors[0],
         backgroundColor: colors[0],
         fill: true
       },
       {
         label: labels[1],
-        data: latestData["unix_seconds"].forEach((element, index) => {
-          [element,latestData["Solar"][index]]
-        }),
+        data: latestData["unix_seconds"].map(
+            (element, index) => [element,latestData["Solar"][index]]
+        ),
         borderColor: colors[1],
         backgroundColor: colors[1],
         fill: true
