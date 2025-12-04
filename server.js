@@ -54,7 +54,7 @@ app.get('/api/graphdata', (req, res) => {
       datasets: [{
         label: labels[0],
         data: latestData["unix_seconds"].map(
-            (element, index) => [latestData["Wind"][index],element]
+            (element, index) => [element,latestData["Wind"][index]]
         ),
         borderColor: colors[0],
         backgroundColor: colors[0],
