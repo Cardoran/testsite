@@ -48,7 +48,7 @@ app.get('/api/graphdata', (req, res) => {
       "Other",
       "Cross border electricity import",
       "Fossil coal", "Fossil oil and gas"]
-    const xLabels = latestData.unix_seconds.map(ts => new Date(ts * 1000).toISOString().split('T')[0]);
+    const xLabels = latestData.unix_seconds.map(ts => new Date(ts * 1000).toISOString());
     const data = {
       labels: xLabels,
       datasets: [{
