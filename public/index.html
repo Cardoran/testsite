@@ -38,7 +38,7 @@
     async function collectData() {
       const startInput = document.getElementById('start').value;
       const endInput = document.getElementById('end').value;
-      await updateLatestData(start = startInput, end = endInput);
+      await fetch('updateLatestData',(start = startInput, end = endInput));
     }
     async function fetchPieData() {
       try {

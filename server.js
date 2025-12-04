@@ -6,7 +6,7 @@ let latestData = null;
 let row = null;
 
 // Function to update the latest data
-async function updateLatestData(country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") {
+app.get('updateLatestData', (country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") => {
   console.log(start,end);
     try {
         latestData = await getPublicPower(); // Use the imported function
@@ -15,7 +15,7 @@ async function updateLatestData(country = "de", start = "2025-03-16 00:00", end 
     } catch (error) {
         console.error("Failed to update data:", error.message);
     }
-}
+});
 
 // Initialize Express.js server
 const app = express();
