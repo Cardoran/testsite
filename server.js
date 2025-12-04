@@ -40,9 +40,9 @@ const colors = [
 
 // API endpoint to get the latest data
 app.get('/api/graphdata', (req, res) => {
-  console.log(newDateString(1));
-  console.log(newDate(1));
-  console.log(latestData.unix_seconds[0]);
+  // console.log(newDateString(1));
+  // console.log(newDate(1));
+  // console.log(latestData.unix_seconds[0]);
   if (latestData && row) {
     const labels = ["Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
       "Other",
