@@ -71,7 +71,20 @@
           graphChart.destroy();
         }
 
-        const labels = Utils.days({count: 7});
+        const labels = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+        ]
         const ctx2 = document.getElementById('graphChart').getContext('2d');
         graphChart = new Chart(ctx2, {
           type: 'line',
