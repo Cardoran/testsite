@@ -13,7 +13,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
         }
 
         const data = response.data;
-        const time = data.unix_seconds.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
+        const time = data.unix_seconds;//.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
 
         const dataDict = { unix_seconds: time };
         data.production_types.forEach(type => {
