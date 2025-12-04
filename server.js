@@ -51,7 +51,7 @@ app.get('/api/graphdata', (req, res) => {
     const xLabels = latestData.unix_seconds.map(ts => new Date(ts * 1000).toISOString().substring(0,16).replace("T"," "));
     const data = {
       labels: xLabels,
-      datasets: [
+      datasets: 
         labels.map((element,index) => ({label: element,
             // data: latestData["unix_seconds"].map(
             //     (element, index) => [element,latestData[element][index]]
@@ -60,7 +60,7 @@ app.get('/api/graphdata', (req, res) => {
             backgroundColor: colors[index],
             fill: true})
         )
-        // {
+        // [{
       //   label: labels[0],
       //   data: latestData["unix_seconds"].map(
       //       (element, index) => [element,latestData["Wind"][index]]
@@ -77,8 +77,7 @@ app.get('/api/graphdata', (req, res) => {
       //   borderColor: colors[1],
       //   backgroundColor: colors[1],
       //   fill: true
-      // }
-    ]
+      // }]
     };
     console.log(data);
     res.json(data);
