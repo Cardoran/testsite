@@ -17,7 +17,7 @@ let row = null;
 app.get('/updateLatestData', (country = "de", startDate = "2025-03-16 00:00", endDate = "2025-03-20 22:00") => {
   console.log(startDate,endDate);
     try {
-        latestData = getPublicPower(start=startDate, end=endDate); // Use the imported function
+        latestData = getPublicPower("de",startDate,endDate); // Use the imported function
         row = getLastFullRow(latestData);
         console.log("Data updated successfully.");
     } catch (error) {
