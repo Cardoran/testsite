@@ -116,5 +116,5 @@ export function get_emissions(df) {
         total_energy += key_energy;
         emissions_total += key_energy*value;
     }
-    return (emissions_total/total_energy).toFixed(0);
+    return (emissions_total/total_energy);
 }
