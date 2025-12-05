@@ -41,6 +41,8 @@
 
       document.getElementById('start').value = formatDate(startDate);
       document.getElementById('end').value = formatDate(endDate);
+
+      fetchData();
     }
 
     // Call this function when the page loads
@@ -154,7 +156,7 @@
     }
 
     // Fetch data immediately
-    fetchData();
+    // fetchData();
 
     // Fetch data on button click
     document.getElementById('fetchButton').addEventListener('click', fetchData);
