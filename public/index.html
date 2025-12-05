@@ -54,12 +54,12 @@
     let graphChart;
 
     // Function to fetch and plot data
-    async function collectData() {
+    function collectData() {
       const startInput = document.getElementById('start').value.substring(0,16).replace("T"," ");
       const endInput = document.getElementById('end').value.substring(0,16).replace("T"," ");
       console.log(startInput,endInput);
       // await fetch('/updateLatestData', {startDate:startInput, endDate:endInput});
-      await fetch(`updateLatestData?startDate=${startInput}&endDate=${endInput}`);
+      fetch(`updateLatestData?startDate=${startInput}&endDate=${endInput}`);
     }
     async function fetchPieData() {
       try {
@@ -150,7 +150,7 @@
         console.error('Error:', error);
       }
     }
-    async function fetchData() {
+    function fetchData() {
       collectData();
       fetchPieData();
       fetchGraphData();
