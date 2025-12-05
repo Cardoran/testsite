@@ -7,7 +7,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
     console.log(`Fetching data from ${url}...`);
 
     try {
-        const response = axios.get(url);
+        const response = await axios.get(url);
         if (response.status === 404) {
             throw new Error("404: API endpoint not found");
         }
