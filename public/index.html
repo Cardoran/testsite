@@ -14,11 +14,11 @@
   <h1>Pie Chart Example</h1>
   <button id="fetchButton">Fetch Data Now</button>
   <div style="margin: 20px 0;">
-    <label for="start">Start Date/Time:</label>
-    <input type="datetime-local" id="start" name="start">
+    <label for="start">Start Date:</label>
+    <input type="date" id="start" name="start">
   
-    <label for="end" style="margin-left: 10px;">End Date/Time:</label>
-    <input type="datetime-local" id="end" name="end">
+    <label for="end" style="margin-left: 10px;">End Date:</label>
+    <input type="date" id="end" name="end">
   
     <button id="updateRangeButton" style="margin-left: 10px;">Update Range</button>
   </div>
@@ -30,6 +30,23 @@
   <!-- Include Chart.js from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+  <script>
+    function setDefaultDates() {
+      const endDate = new Date(); // Current date
+      const startDate = new Date();
+      startDate.setDate(endDate.getDate() - 5); // 5 days before current date
+
+      // Format dates as YYYY-MM-DD (required for input[type="date"])
+      const formatDate = (date) => date.toISOString().split('T')[0];
+
+      document.getElementById('start').value = formatDate(startDate);
+      document.getElementById('end').value = formatDate(endDate);
+    }
+
+    // Call this function when the page loads
+    window.addEventListener('DOMContentLoaded', setDefaultDates);
+  </script>
+  
   <script>
     let pieChart;
     let graphChart;
