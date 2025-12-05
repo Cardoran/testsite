@@ -23,7 +23,7 @@ app.get('/updateLatestData', async (req, res) => {
         latestData = await getPublicPower("de",startDate,endDate); // Use the imported function
         row = getLastFullRow(latestData);
         emissions = get_emissions(row).toFixed(0) + " g/kWh";
-        row_time = row.unix_seconds;
+        row_time = row["unix_seconds"];
         console.log(emissions);
         console.log("Data updated successfully.");
     } catch (error) {
