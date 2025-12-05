@@ -53,9 +53,9 @@
 
     // Function to fetch and plot data
     async function collectData() {
-      const startInput = document.getElementById('start').value.toISOString();
-      const endInput = document.getElementById('end').value.toISOString();
-      console.log(startInput,endInput);
+      const startInput = document.getElementById('start').value;
+      const endInput = document.getElementById('end').value;
+      console.log(typeof startInput,typeof endInput);
       await fetch('/updateLatestData',{start: startInput, end: endInput});
     }
     async function fetchPieData() {
