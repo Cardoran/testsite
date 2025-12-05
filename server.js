@@ -24,6 +24,7 @@ app.get('/updateLatestData', async (req, res) => {
     } catch (error) {
         console.error("Failed to update data:", error.message);
     }
+  res.json([]);
 });
 
 // API endpoint to get the latest data
