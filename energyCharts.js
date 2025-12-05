@@ -97,7 +97,7 @@ export function getLastFullRow(df) {
 }
 
 export function get_emissions(df) {
-    emissions_per_type = {"Hydro":24,//wikipedia Life-cycle_greenhouse_gas_emissions_of_energy_sources
+    const emissions_per_type = {"Hydro":24,//wikipedia Life-cycle_greenhouse_gas_emissions_of_energy_sources
                     "Waste":329/2,//http://www.lak-energiebilanzen.de/methodik-der-co2-bilanzen/
                     "Biomass":230,//wikipedia
                     "Geothermal":38,//wiki
