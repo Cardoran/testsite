@@ -60,8 +60,8 @@
       console.log(startInput,endInput);
       // await fetch('/updateLatestData', {startDate:startInput, endDate:endInput});
       await fetch(`updateLatestData?startDate=${startInput}&endDate=${endInput}`);
-      fetchPieData();
-      fetchGraphData();
+      await fetchPieData();
+      await fetchGraphData();
     }
     async function fetchPieData() {
       try {
