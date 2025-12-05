@@ -90,6 +90,7 @@ export function getLastFullRow(df) {
                 throw new Error("No valid row found (all rows contain NaN).");
             }
         } else {
+            row[unix_seconds] = df.unix_seconds[i]
             // console.log(row);
             return row; // Return the valid row
         }

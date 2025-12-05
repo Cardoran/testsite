@@ -13,6 +13,7 @@ app.use(express.static('public'));
 let latestData = null;
 let row = null;
 let emissions = null;
+let row_time = null;
 
 // Function to update the latest data
 app.get('/updateLatestData', async (req, res) => {
@@ -22,6 +23,7 @@ app.get('/updateLatestData', async (req, res) => {
         latestData = await getPublicPower("de",startDate,endDate); // Use the imported function
         row = getLastFullRow(latestData);
         emissions = get_emissions(row).toFixed(0) + " g/kWh";
+        row_time = row.unix_seconds;
         console.log(emissions);
         console.log("Data updated successfully.");
     } catch (error) {
@@ -89,6 +91,7 @@ app.get('/api/piedata', async (req, res) => {
   if (latestData && row) {
     const chartData = {
       emissions: emissions,
+      row_time: row_time,
       labels: ["Renewables", "Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
               "Other", "Other",
               "Cross border electricity import", "Cross border electricity import",
