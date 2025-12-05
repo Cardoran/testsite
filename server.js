@@ -14,11 +14,11 @@ let latestData = null;
 let row = null;
 
 // Function to update the latest data
-app.get('/updateLatestData', (req, res) => {
+app.get('/updateLatestData', async (req, res) => {
   const {country, startDate, endDate} = req.query;
   console.log(startDate,endDate);
     try {
-        latestData = getPublicPower("de",startDate,endDate); // Use the imported function
+        latestData = await getPublicPower("de",startDate,endDate); // Use the imported function
         row = getLastFullRow(latestData);
         console.log("Data updated successfully.");
     } catch (error) {
