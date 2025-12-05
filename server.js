@@ -91,7 +91,7 @@ app.get('/api/piedata', async (req, res) => {
   if (latestData && row) {
     const chartData = {
       emissions: emissions,
-      row_time: row_time,
+      row_time: new Date(row_time * 1000).toISOString().substring(0,16).replace("T"," "),
       labels: ["Renewables", "Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
               "Other", "Other",
               "Cross border electricity import", "Cross border electricity import",
