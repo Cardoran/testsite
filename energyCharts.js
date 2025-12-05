@@ -2,12 +2,12 @@ import { DateTime } from 'luxon';
 import axios from 'axios';
 
 // Function to fetch and process data
-export async function getPublicPower(country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") {
+export function getPublicPower(country = "de", start = "2025-03-16 00:00", end = "2025-03-20 22:00") {
     const url = `https://api.energy-charts.info/public_power?country=${country}&start=${start}&end=${end}`;
     console.log(`Fetching data from ${url}...`);
 
     try {
-        const response = await axios.get(url);
+        const response = axios.get(url);
         if (response.status === 404) {
             throw new Error("404: API endpoint not found");
         }
