@@ -109,8 +109,8 @@ export function get_emissions(df) {
                     "Fossil gas":436,//quaschning
                     "Fossil coal-derived gas":436,//no info, take fossil gas
                     "Fossil oil":265/0.4}//quaschning with 40% efficiency
-    emissions_total = 0;
-    total_energy = 0;
+    const emissions_total = 0;
+    const total_energy = 0;
     for (const [key, value] of Object.entries(emissions_per_type)) {
         key_energy = df[key];
         total_energy += key_energy;
