@@ -1,5 +1,5 @@
 import express from 'express';
-import { getPublicPower, getLastFullRow } from './energyCharts.js'; // Import the function
+import { getPublicPower, getLastFullRow, get_emissions } from './energyCharts.js'; // Import the function
 
 // Initialize Express.js server
 const app = express();
@@ -12,6 +12,7 @@ app.use(express.static('public'));
 // Global variable to store the latest data
 let latestData = null;
 let row = null;
+let emissions = null;
 
 // Function to update the latest data
 app.get('/updateLatestData', async (req, res) => {
@@ -20,6 +21,7 @@ app.get('/updateLatestData', async (req, res) => {
     try {
         latestData = await getPublicPower("de",startDate,endDate); // Use the imported function
         row = getLastFullRow(latestData);
+        emissions = get_emissions(row);
         console.log("Data updated successfully.");
     } catch (error) {
         console.error("Failed to update data:", error.message);
@@ -85,6 +87,7 @@ app.get('/api/piedata', async (req, res) => {
   ]
   if (latestData && row) {
     const chartData = {
+      emissions: emissions,
       labels: ["Renewables", "Hydro", "Waste, Biomass and Geothermal", "Wind", "Solar",
               "Other", "Other",
               "Cross border electricity import", "Cross border electricity import",
