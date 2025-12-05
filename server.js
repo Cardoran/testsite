@@ -27,7 +27,7 @@ app.get('/updateLatestData', async (req, res) => {
 });
 
 // API endpoint to get the latest data
-app.get('/api/graphdata', (req, res) => {
+app.get('/api/graphdata', async (req, res) => {
   console.log("loading data for graph");
   if (latestData && row) {  
     const colors = [
@@ -66,7 +66,7 @@ app.get('/api/graphdata', (req, res) => {
     res.status(503).send("No data available yet.");
   }
 });
-app.get('/api/piedata', (req, res) => {
+app.get('/api/piedata', async (req, res) => {
   console.log("loading data for pie");
   const colors = [
     'rgba(49, 163, 84, 1)',
