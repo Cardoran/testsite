@@ -34,7 +34,7 @@
     function setDefaultDates() {
       const endDate = new Date(); // Current date
       const startDate = new Date();
-      startDate.setDate(endDate.getDate() - 5); // 5 days before current date
+      startDate.setDate(endDate.getDate() - 7); // 5 days before current date
 
       // Format dates as YYYY-MM-DD (required for input[type="date"])
       const formatDate = (date) => date.toISOString().split('T')[0];
@@ -46,15 +46,15 @@
     // Call this function when the page loads
     window.addEventListener('DOMContentLoaded', setDefaultDates);
   </script>
-  
+
   <script>
     let pieChart;
     let graphChart;
 
     // Function to fetch and plot data
     async function collectData() {
-      const startInput = document.getElementById('start').value;
-      const endInput = document.getElementById('end').value;
+      const startInput = document.getElementById('start').value.toISOString();
+      const endInput = document.getElementById('end').value.toISOString();
       console.log(startInput,endInput);
       await fetch('/updateLatestData',{start: startInput, end: endInput});
     }
