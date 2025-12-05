@@ -112,7 +112,7 @@ export function get_emissions(df) {
     const emissions_total = 0;
     const total_energy = 0;
     for (const [key, value] of Object.entries(emissions_per_type)) {
-        key_energy = df[key];
+        let key_energy = df[key];
         total_energy += key_energy;
         emissions_total += key_energy*value;
     }
