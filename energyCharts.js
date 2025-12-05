@@ -84,7 +84,7 @@ export function getLastFullRow(df) {
         const hasNaN = testVals.some(val => isNaN(val) || val === null || val === undefined);
 
         if (hasNaN) {
-            console.log(`NaN found @ ${row.unix_seconds}`);
+            // console.log(`NaN found @ ${row.unix_seconds}`);
             i--;
             if (i < 0) {
                 throw new Error("No valid row found (all rows contain NaN).");

@@ -59,7 +59,7 @@ app.get('/api/graphdata', (req, res) => {
             fill: true})
         )
     };
-    console.log(data);
+    // console.log(data);
     res.json(data);
   } else {
     res.status(503).send("No data available yet.");
@@ -123,7 +123,7 @@ app.get('/api/piedata', (req, res) => {
         weight: 0.67
       }]
     };
-    console.log(chartData);
+    // console.log(chartData);
     res.json(chartData);
   } else {
     res.status(503).send("No data available yet.");
