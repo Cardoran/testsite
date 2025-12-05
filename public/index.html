@@ -56,7 +56,7 @@
       const startInput = document.getElementById('start').value.substring(0,16).replace("T"," ");
       const endInput = document.getElementById('end').value.substring(0,16).replace("T"," ");
       console.log(startInput,endInput);
-      await fetch('/updateLatestData?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}');
+      await fetch('/updateLatestData?startDate=${encodeURIComponent(startInput)}&endDate=${encodeURIComponent(endInput)}');
     }
     async function fetchPieData() {
       try {
