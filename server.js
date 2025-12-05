@@ -22,6 +22,7 @@ app.get('/updateLatestData', async (req, res) => {
         latestData = await getPublicPower("de",startDate,endDate); // Use the imported function
         row = getLastFullRow(latestData);
         emissions = get_emissions(row);
+        console.log(emissions);
         console.log("Data updated successfully.");
     } catch (error) {
         console.error("Failed to update data:", error.message);
