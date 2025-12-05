@@ -150,8 +150,8 @@
         console.error('Error:', error);
       }
     }
-    function fetchData() {
-      collectData();
+    async function fetchData() {
+      await collectData();
       fetchPieData();
       fetchGraphData();
     }
