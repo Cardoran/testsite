@@ -1,0 +1,135 @@
+let pieChart;
+let graphChart;
+
+// Function to fetch and plot data
+async function collectData() {
+    const startInput = document.getElementById('start').value.substring(0,16).replace("T"," ");
+    const endInput = document.getElementById('end').value.substring(0,16).replace("T"," ");
+    console.log(startInput,endInput);
+    // await fetch('/updateLatestData', {startDate:startInput, endDate:endInput});
+    await fetch(`updateLatestData?startDate=${startInput}&endDate=${endInput}`);
+    fetchPieData();
+    fetchGraphData();
+}
+async function fetchPieData() {
+    try {
+    const response = await fetch('/api/piedata');
+    const piedata = await response.json();
+
+    // Destroy previous chart if it exists
+    if (pieChart) {
+        pieChart.destroy();
+    }
+
+    const customTextPlugin = {
+        id: 'customText',
+        afterDraw: (chart) => {
+        const ctx = chart.ctx;
+        const chartArea = chart.chartArea; // Get the chart area
+
+        // Calculate the center of the doughnut
+        const centerX = (chartArea.left + chartArea.right) / 2;
+        const centerY = (chartArea.top + chartArea.bottom) / 2;
+
+        ctx.save();
+        ctx.font = 'bold 16px Arial';
+        ctx.fillStyle = 'blue';
+        ctx.textAlign = 'center';
+        ctx.fillText(piedata.emissions, centerX, centerY);
+        ctx.fillText(piedata.row_time, centerX, centerY + 25);
+        ctx.restore();
+        }
+    };
+
+    // Create a new pie chart
+    const ctx = document.getElementById('pieChart').getContext('2d');
+    pieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: piedata,
+        options: {
+        responsive: false,
+        animation: true,
+        plugins: {
+            legend: {
+            display: false,
+            position: 'right'
+            },
+            title: {
+            display: true,
+            text: 'Power Generation'
+            }
+        }
+        },
+        plugins: [customTextPlugin] // Register the custom plugin
+    });
+    } catch (error) {
+    console.error('Error:', error);
+    }
+}
+async function fetchGraphData() {
+    try {
+    const response = await fetch('/api/graphdata');
+    const graphdata = await response.json();
+
+    console.log(graphChart)
+    if (graphChart) {
+        graphChart.destroy();
+    }
+
+    Chart.Tooltip.positioners.cursor = function(chartElements, coordinates) {
+        return coordinates;
+    };
+    const ctx2 = document.getElementById('graphChart').getContext('2d');
+    graphChart = new Chart(ctx2, {
+        type: 'line',
+        data: graphdata,
+        options: {
+        responsive: true,
+        radius: 0,
+        interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false,
+            position: 'cursor',
+        },
+        scales: {
+            x: {
+            ticks: {
+                autoSkip: false,
+                callback: function (value, index, values) {
+                // Only show label if it's the first timestamp of the day
+                const date = this.getLabelForValue(value).split(" ");
+                return date[1] == "00:00" ? date[0] : '';
+                }
+            },
+            title: {
+                display: true,
+                text: 'time'
+            }
+            },
+            y: {
+            stacked: true,
+            title: {
+                display: true,
+                text: 'power'
+            }
+            }
+        }
+        }
+    });
+    } catch (error) {
+    console.error('Error:', error);
+    }
+}
+function fetchData() {
+    collectData();
+    // fetchPieData();
+    // fetchGraphData();
+}
+
+// Fetch data immediately
+// fetchData();
+
+// Fetch data on button click
+document.getElementById('fetchButton').addEventListener('click', fetchData);
+document.getElementById('updateRangeButton').addEventListener('click', fetchData);
