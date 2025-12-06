@@ -131,5 +131,4 @@ function fetchData() {
 // fetchData();
 
 // Fetch data on button click
-document.getElementById('fetchButton').addEventListener('click', fetchData);
 document.getElementById('updateRangeButton').addEventListener('click', fetchData);
