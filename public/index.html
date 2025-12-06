@@ -5,15 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pie Chart Example</title>
   <style>
+    h1 {text-align: center;}
     body { font-family: Arial, sans-serif; margin: 20px; }
     .chart-container { width: 800px; height: 400px; margin: 20px auto; }
+    .button-container { width: 800px; margin: 20px auto; }
     button { padding: 10px 15px; background: #007BFF; color: white; border: none; cursor: pointer; }
   </style>
 </head>
 <body>
   <h1>Pie Chart Example</h1>
   <button id="fetchButton">Fetch Data Now</button>
-  <div style="margin: 20px 0;">
+  <div class="button-container">
     <label for="start">Start Date:</label>
     <input type="date" id="start" name="start">
   
@@ -23,8 +25,8 @@
     <button id="updateRangeButton" style="margin-left: 10px;">Update Range</button>
   </div>
   <div class="chart-container">
-    <canvas id="pieChart"></canvas>
-    <canvas id="graphChart"></canvas>
+    <canvas id="pieChart" width="100%"></canvas>
+    <canvas id="graphChart" width="100%"></canvas>
   </div>
 
   <!-- Include Chart.js from CDN -->
@@ -44,6 +46,26 @@
 
       fetchData();
     }
+
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    // resize the canvas to fill browser window dynamically
+    window.addEventListener('resize', resizeCanvas, false);
+          
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+                  
+      /**
+       * Your drawings need to be inside this function otherwise they will be reset when 
+       * you resize the browser window and the canvas goes will be cleared.
+       */
+      // drawStuff(); 
+    }
+    
+    resizeCanvas();
+    
 
     // Call this function when the page loads
     window.addEventListener('DOMContentLoaded', setDefaultDates);
