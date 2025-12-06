@@ -55,7 +55,7 @@ async function fetchPieData() {
             position: 'right'
             },
             title: {
-            display: true,
+            display: false,
             text: 'Power Generation'
             }
         }
