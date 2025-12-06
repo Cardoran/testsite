@@ -25,8 +25,8 @@
     <button id="updateRangeButton" style="margin-left: 10px;">Update Range</button>
   </div>
   <div class="chart-container">
-    <canvas id="pieChart" width="100%"></canvas>
-    <canvas id="graphChart" width="100%"></canvas>
+    <canvas id="pieChart" width="inherit"></canvas>
+    <canvas id="graphChart" width="inherit"></canvas>
   </div>
 
   <!-- Include Chart.js from CDN -->
@@ -46,26 +46,6 @@
 
       fetchData();
     }
-
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-
-    // resize the canvas to fill browser window dynamically
-    window.addEventListener('resize', resizeCanvas, false);
-          
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-                  
-      /**
-       * Your drawings need to be inside this function otherwise they will be reset when 
-       * you resize the browser window and the canvas goes will be cleared.
-       */
-      // drawStuff(); 
-    }
-    
-    resizeCanvas();
-    
 
     // Call this function when the page loads
     window.addEventListener('DOMContentLoaded', setDefaultDates);
