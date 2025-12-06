@@ -7,7 +7,7 @@ const PORT = 80;
 
 // Serve static files (e.g., HTML, CSS, JS)
 app.use(express.static('public'));
-app.use(express.json());
+app.use(express.bodyParser());
 
 
 // Global variable to store the latest data
