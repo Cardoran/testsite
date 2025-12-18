@@ -123,6 +123,7 @@ async function fetchGraphData() {
 }
 function fetchData() {
     collectData();
+    console.log(document.getElementById("start").value, document.getElementById("end").value)
     // fetchPieData();
     // fetchGraphData();
 }
