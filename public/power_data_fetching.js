@@ -129,7 +129,7 @@ function fetchData() {
 }
 
 // Fetch data immediately
-// fetchData();
+fetchData();
 
 // Fetch data on button click
 document.getElementById('updateRangeButton').addEventListener('click', fetchData);
