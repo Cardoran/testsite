@@ -22,6 +22,7 @@ document.getElementById('start').addEventListener('change', function() {
     const endDateInput = document.getElementById('end');
     if (endDateInput.value && endDateInput.value < startDate) {
       endDateInput.value = '';
+      endDateInput.focus();
     }
   });
 
