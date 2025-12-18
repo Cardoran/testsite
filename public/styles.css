@@ -45,7 +45,7 @@ h1 {
 .chart-container {
     width: 60%; 
     min-width:400px; 
-    height: 400px; 
+    min-height: 400px; 
     margin: 20px auto;
 
 }
