@@ -55,18 +55,19 @@ async function fetchPieData() {
         type: 'doughnut',
         data: piedata,
         options: {
-        responsive: false,
-        animation: true,
-        plugins: {
-            legend: {
-            display: false,
-            position: 'right'
-            },
-            title: {
-            display: false,
-            text: 'Power Generation'
+            responsive: true,
+            maintainAspectRatio: true, // This works with the CSS aspect-ratio
+            animation: true,
+            plugins: {
+                legend: {
+                display: false,
+                position: 'right'
+                },
+                title: {
+                display: false,
+                text: 'Power Generation'
+                }
             }
-        }
         },
         plugins: [customTextPlugin] // Register the custom plugin
     });
