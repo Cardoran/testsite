@@ -1,6 +1,7 @@
 // Initialize Flatpickr for both inputs
 const startDatePicker = flatpickr("#start", {
     dateFormat: "Y-m-d",
+    maxDate: "today",
     onChange: function(selectedDates, dateStr, instance) {
         if (selectedDates.length > 0) {
         // Set the minDate for the end date picker to the selected start date
@@ -13,6 +14,7 @@ const startDatePicker = flatpickr("#start", {
 
 const endDatePicker = flatpickr("#end", {
     dateFormat: "Y-m-d",
+    maxDate: "today",
     onChange: function(selectedDates, dateStr, instance) {
         const startDate = document.getElementById("start").value;
         const endDateInput = document.getElementById("end");
