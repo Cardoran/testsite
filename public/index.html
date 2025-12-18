@@ -12,7 +12,9 @@
     .results-container {
       margin: 20px;
       display: flex;
-      gap: 20px;
+      flex-direction: column; /* Stack vertically */
+      gap: 5px; /* Reduce gap for compactness */
+      width: fit-content; /* Fit content width */
     }
     .result-box {
       padding: 10px;
@@ -22,13 +24,14 @@
       align-items: center;
       gap: 8px;
       position: relative;
+      width: fit-content; /* Fit content width */
+      white-space: nowrap; /* Prevent line breaks */
     }
     .regenerative {
       color: green;
     }
     .co2 {
       color: black;
-      /* font-weight: bold; */
     }
     .co2-logo {
       font-weight: bold;
@@ -53,10 +56,10 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-    /* .tooltip:hover .tooltiptext {
+    .tooltip:hover .tooltiptext {
       visibility: visible;
       opacity: 1;
-    } */
+    }
   </style>
 </head>
 <body>
