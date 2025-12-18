@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
   <header class="header">
@@ -18,15 +19,15 @@
       </div>
   </header>
   <main>
-    <div class="button-container">
-      <label for="start">Start Date:</label>
-      <input type="date" id="start" name="start">
-    
-      <label for="end" style="margin-left: 10px;">End Date:</label>
-      <input type="date" id="end" name="end">
-    
-      <button id="updateRangeButton" style="margin-left: 10px;">Update Range</button>
-    </div>
+  <div class="button-container">
+    <label for="start">Start Date:</label>
+    <input type="text" id="start" name="start" placeholder="Select start date">
+
+    <label for="end" style="margin-left: 10px;">End Date:</label>
+    <input type="text" id="end" name="end" placeholder="Select end date">
+
+    <button id="updateRangeButton" style="margin-left: 10px;">Update Range</button>
+  </div>
     <div class="chart-container">
       <div style="float: left; width:20%;">
         <canvas id="pieChart" style="width:100%;"></canvas>
@@ -39,6 +40,7 @@
 
   <!-- Include Chart.js from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="date_selecter_adjustment.js"></script>
   <script src="power_data_fetching.js"></script>
   <script src="scrolling_event.js"></script>

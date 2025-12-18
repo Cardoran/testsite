@@ -1,30 +1,42 @@
+// Initialize Flatpickr for both inputs
+const startDatePicker = flatpickr("#start", {
+    dateFormat: "Y-m-d",
+    onChange: function(selectedDates, dateStr, instance) {
+        if (selectedDates.length > 0) {
+        // Set the minDate for the end date picker to the selected start date
+        endDatePicker.set("minDate", dateStr);
+        // Open the end date picker
+        endDatePicker.open();
+        }
+    }
+});
 
+const endDatePicker = flatpickr("#end", {
+    dateFormat: "Y-m-d",
+    onChange: function(selectedDates, dateStr, instance) {
+        const startDate = document.getElementById("start").value;
+        const endDateInput = document.getElementById("end");
+
+        if (dateStr < startDate) {
+        endDateInput.classList.add("invalid-date");
+        } else {
+        endDateInput.classList.remove("invalid-date");
+        }
+    }
+});
+
+// Set default dates (e.g., last 7 days)
 function setDefaultDates() {
-    const endDate = new Date(); // Current date
+    const endDate = new Date();
     const startDate = new Date();
-    startDate.setDate(endDate.getDate() - 7); // 5 days before current date
+    startDate.setDate(endDate.getDate() - 7);
 
-    // Format dates as YYYY-MM-DD (required for input[type="date"])
     const formatDate = (date) => date.toISOString().split('T')[0];
 
-    document.getElementById('start').value = formatDate(startDate);
-    document.getElementById('end').value = formatDate(endDate);
-
-    fetchData();
+    startDatePicker.setDate(formatDate(startDate));
+    endDatePicker.setDate(formatDate(endDate));
+    endDatePicker.set("minDate", formatDate(startDate));
 }
-
-// Add event listener to the start date input
-document.getElementById('start').addEventListener('change', function() {
-    const startDate = this.value;
-    document.getElementById('end').min = startDate;
-
-    // Optional: If the end date is already set and is before the new start date, clear it
-    const endDateInput = document.getElementById('end');
-    if (endDateInput.value && endDateInput.value < startDate) {
-      endDateInput.value = '';
-      endDateInput.click();
-    }
-  });
 
 // Call this function when the page loads
 window.addEventListener('DOMContentLoaded', setDefaultDates);
