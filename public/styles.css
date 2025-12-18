@@ -48,6 +48,14 @@ h1 {
     /* min-height: 400px;  */
     margin: 20px auto;
     aspect-ratio: 16/9; /* Adjust the ratio (e.g., 4/3, 1/1) to fit your needs */
+    
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+#graphChart {
+    width: 100% !important;
+    height: 100% !important;
 }
 
 .button-container { 
