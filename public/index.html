@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <style>
@@ -28,13 +28,16 @@
     }
     .co2 {
       color: black;
+      /* font-weight: bold; */
+    }
+    .co2_logo {
       font-weight: bold;
     }
     .tooltip {
       position: relative;
       display: inline-block;
     }
-    .tooltip .tooltiptext {
+    .tooltiptext {
       visibility: hidden;
       width: 120px;
       background-color: #555;
@@ -50,10 +53,10 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-    .tooltip:hover .tooltiptext {
+    /* .tooltip:hover .tooltiptext {
       visibility: visible;
       opacity: 1;
-    }
+    } */
   </style>
 </head>
 <body>
@@ -91,7 +94,7 @@
           <span class="tooltiptext">Regenerative power percentage (dummy text)</span>
         </div>
         <div class="result-box co2 tooltip">
-          <span>CO₂</span>
+          <div class="co2"><span>CO₂</span></div>
           <span id="co2Emissions">--</span>
           <span class="tooltiptext">CO₂ emissions (dummy text)</span>
         </div>
