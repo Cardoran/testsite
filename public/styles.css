@@ -45,9 +45,9 @@ h1 {
 .chart-container {
     width: 60%; 
     min-width:400px; 
-    min-height: 400px; 
+    /* min-height: 400px;  */
     margin: 20px auto;
-
+    aspect-ratio: 16/9; /* Adjust the ratio (e.g., 4/3, 1/1) to fit your needs */
 }
 
 .button-container { 
