@@ -5,8 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <style>
+    .results-container {
+      margin: 20px;
+      display: flex;
+      gap: 20px;
+    }
+    .result-box {
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+    .regenerative {
+      color: green;
+    }
+    .co2 {
+      color: black;
+      font-weight: bold;
+    }
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -35,6 +83,18 @@
       </div>
       <div style="float: left; width:70%;">
         <canvas id="graphChart" style="width:100%;"></canvas>
+      </div>
+      <div class="results-container">
+        <div class="result-box regenerative tooltip">
+          <i class="fas fa-leaf"></i>
+          <span id="regenerativePercentage">--</span>
+          <span class="tooltiptext">Regenerative power percentage (dummy text)</span>
+        </div>
+        <div class="result-box co2 tooltip">
+          <span>CO₂</span>
+          <span id="co2Emissions">--</span>
+          <span class="tooltiptext">CO₂ emissions (dummy text)</span>
+        </div>
       </div>
     </div>
   </main>
