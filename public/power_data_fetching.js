@@ -11,13 +11,6 @@ async function collectData() {
     fetchPieData();
     fetchGraphData();
 
-    // Dummy data for demonstration
-    const regenerativePercentage = Math.floor(Math.random() * 100); // Random value for demo
-    const co2Emissions = Math.floor(Math.random() * 1000); // Random value for demo
-
-    // Update the results
-    document.getElementById("regenerativePercentage").textContent = `${regenerativePercentage}%`;
-    document.getElementById("co2Emissions").textContent = `${co2Emissions} kg`;
 }
 async function fetchPieData() {
     try {
@@ -129,6 +122,14 @@ async function fetchGraphData() {
     } catch (error) {
     console.error('Error:', error);
     }
+    
+    // Dummy data for demonstration
+    const regenerativePercentage = Math.floor(Math.random() * 100); // Random value for demo
+    const co2Emissions = Math.floor(Math.random() * 1000); // Random value for demo
+
+    // Update the results
+    document.getElementById("regenerativePercentage").textContent = `${regenerativePercentage}%`;
+    document.getElementById("co2Emissions").textContent = `${co2Emissions} kg`;
 }
 function fetchData() {
     collectData();
