@@ -140,6 +140,17 @@ app.get('/api/piedata', async (req, res) => {
   }
 });
 
+
+// Handle SIGTERM for graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received. Shutting down gracefully...');
+  app.close(() => {
+    console.log('Server closed.');
+    process.exit(0);
+  });
+});
+
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
