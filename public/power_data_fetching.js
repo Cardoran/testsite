@@ -127,12 +127,12 @@ async function fetchLabelData() {
         const labeldata = await response.json();
 
         // Dummy data for demonstration
-        const regenerativePercentage = labeldata.regenerativePercentage; // Random value for demo
-        const co2Emissions = labeldata.co2Emissions; // Random value for demo
+        const regenerativePercentage = labeldata.regenerativePercentage*100; 
+        const co2Emissions = labeldata.co2Emissions; 
 
         // Update the results
-        document.getElementById("regenerativePercentage").textContent = `${regenerativePercentage}%`;
-        document.getElementById("co2Emissions").textContent = `${co2Emissions} kg`;
+        document.getElementById("regenerativePercentage").textContent = `${regenerativePercentage.toFixed(1)}%`;
+        document.getElementById("co2Emissions").textContent = `${co2Emissions.toFixed(1)} kg`;
     } catch (error) {
     console.error('Error:', error);
     }

@@ -97,19 +97,19 @@ export function getLastFullRow(df) {
     }
 }
 
+const emissions_per_type = {"Hydro":24,//wikipedia Life-cycle_greenhouse_gas_emissions_of_energy_sources
+    "Waste":329/2,//http://www.lak-energiebilanzen.de/methodik-der-co2-bilanzen/
+    "Biomass":230,//wikipedia
+    "Geothermal":38,//wiki
+    "Wind offshore":12,//wiki
+    "Wind onshore":11,//wiki
+    "Solar":48,//wiki
+    "Fossil brown coal / lignite":1073,//quaschning
+    "Fossil hard coal":970,//quaschning
+    "Fossil gas":436,//quaschning
+    "Fossil coal-derived gas":436,//no info, take fossil gas
+    "Fossil oil":265/0.4}//quaschning with 40% efficiency
 export function get_emissions(df) {
-    const emissions_per_type = {"Hydro":24,//wikipedia Life-cycle_greenhouse_gas_emissions_of_energy_sources
-                    "Waste":329/2,//http://www.lak-energiebilanzen.de/methodik-der-co2-bilanzen/
-                    "Biomass":230,//wikipedia
-                    "Geothermal":38,//wiki
-                    "Wind offshore":12,//wiki
-                    "Wind onshore":11,//wiki
-                    "Solar":48,//wiki
-                    "Fossil brown coal / lignite":1073,//quaschning
-                    "Fossil hard coal":970,//quaschning
-                    "Fossil gas":436,//quaschning
-                    "Fossil coal-derived gas":436,//no info, take fossil gas
-                    "Fossil oil":265/0.4}//quaschning with 40% efficiency
     let emissions_total = 0;
     let total_energy = 0;
     for (const [key, value] of Object.entries(emissions_per_type)) {
@@ -121,7 +121,12 @@ export function get_emissions(df) {
 }
 
 export function get_total_emissions(df) {
-    return 0;
+    let emissions_total = 0;
+    for (const [key, value] of Object.entries(emissions_per_type)) {
+        let key_energy = df[key].reduce((tot,val) => tot+val,0);
+        emissions_total += key_energy*value;
+    }
+    return (emissions_total*1E3/4); //convert power in MW to kWh
 }
 
 export function get_total_regenerative_percentage(df) {
