@@ -99,7 +99,7 @@ export function getLastFullRow(df) {
 }
 
 export function reduceDatapoints(df) {
-    console.log(sdf`Reducing datapoints`);
+    console.log(`Reducing datapoints`);
     console.log(df)
     try {
         if (df.unix_seconds.length <= 3000) {
