@@ -16,6 +16,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
         const time = data.unix_seconds;//.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
 
         const dataDict = { unix_seconds: time };
+        console.log(dataDict)
         data.production_types.forEach(type => {
             dataDict[type.name] = type.data;
         });
@@ -98,7 +99,8 @@ export function getLastFullRow(df) {
 }
 
 export function reduceDatapoints(df) {
-    console.log(`Reducing datapoints`);
+    console.log(sdf`Reducing datapoints`);
+    console.log(df)
     try {
         if (df.unix_seconds.length <= 3000) {
             return df;
