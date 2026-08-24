@@ -1,5 +1,5 @@
 import express from 'express';
-import { getPublicPower, getLastFullRow, get_emissions, get_total_emissions } from './energyCharts.js'; // Import the function
+import { getPublicPower, getLastFullRow, get_emissions, get_total_emissions, get_total_regenerative_percentage } from './energyCharts.js'; // Import the function
 
 // Initialize Express.js server
 const app = express();
