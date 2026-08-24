@@ -58,6 +58,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
         // console.log(dataDict);
         return dataDict;
     } catch (error) {
+        b
         console.error(`Error fetching data: ${error.message}`);
         throw error;
     }
@@ -105,16 +106,17 @@ export function reduceDatapoints(df) {
         if (df.unix_seconds.length <= 3000) {
             return df;
         } else {
-            const size = Math.ceil(df.unix_seconds.length / 3000);
-            Object.keys(df).forEach((key) => {
-                const groupCount = Math.ceil(df[key].length / size);
-                df[key] = Array.from({ length: groupCount }, (_, i) =>
-                    df[key].slice(i * size, i * size + size).reduce((a, b) => a + b, 0)
-                );
-            });
+            size = Math.ceil(df.unix_seconds.length/3000);
+            // console.log(dataDict);
+            Object.keys(df).forEach((key) => 
+                df[key] = df[key].filter((_, i) => i % size === 0)
+                                .map((_, i) => df[key].slice(i * size, i * size + size)
+                                                .reduce((a, b) => a + b, 0)
+            ));
             return df;
         }
     } catch (error) {
+        a
         console.error(`Error fetching data: ${error.message}`);
         throw error;
     }
