@@ -132,7 +132,7 @@ async function fetchLabelData() {
 
         // Update the results
         document.getElementById("regenerativePercentage").textContent = `${regenerativePercentage.toFixed(1)}%`;
-        document.getElementById("co2Emissions").textContent = `${co2Emissions.toFixed(1)} kg`;
+        document.getElementById("co2Emissions").textContent = `${co2Emissions.toFixed(3)} Mt`;
     } catch (error) {
     console.error('Error:', error);
     }

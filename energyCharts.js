@@ -97,7 +97,8 @@ export function getLastFullRow(df) {
     }
 }
 
-const emissions_per_type = {"Hydro":24,//wikipedia Life-cycle_greenhouse_gas_emissions_of_energy_sources
+const emissions_per_type = { //in units of g/kWh
+    "Hydro":24,//wikipedia Life-cycle_greenhouse_gas_emissions_of_energy_sources
     "Waste":329/2,//http://www.lak-energiebilanzen.de/methodik-der-co2-bilanzen/
     "Biomass":230,//wikipedia
     "Geothermal":38,//wiki
@@ -126,7 +127,7 @@ export function get_total_emissions(df) {
         let key_energy = df[key].reduce((tot,val) => tot+val,0);
         emissions_total += key_energy*value;
     }
-    return (emissions_total*1E3/4); //convert power in MW to kWh
+    return (emissions_total*1E3/4/1E12); //convert power in MW to kWh and g to Mt
 }
 
 export function get_total_regenerative_percentage(df) {
