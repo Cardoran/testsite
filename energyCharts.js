@@ -119,3 +119,24 @@ export function get_emissions(df) {
     }
     return (emissions_total/total_energy);
 }
+
+export function get_total_emissions(df) {
+    return 0;
+}
+
+export function get_total_regenerative_percentage(df) {
+    const other_labels = ["Cross border electricity export", "Hydro pumped storage consumption",
+        "Cross border electricity import", "Others", 
+        "Fossil coal","Fossil oil and gas",
+    ]
+    const regen_labels = ["Hydro","Waste, Biomass and Geothermal","Wind","Solar"
+    ]
+
+    const sum_labels = (labels) => labels.reduce((total,label) => 
+        total+df[label].reduce((subtotal,power) => subtotal+power,0),
+    0);
+
+    const total_other = sum_labels(other_labels);
+    const total_regen = sum_labels(regen_labels);
+    return total_regen/(total_regen+total_other);
+}

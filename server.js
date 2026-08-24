@@ -1,5 +1,5 @@
 import express from 'express';
-import { getPublicPower, getLastFullRow, get_emissions } from './energyCharts.js'; // Import the function
+import { getPublicPower, getLastFullRow, get_emissions, get_total_emissions } from './energyCharts.js'; // Import the function
 
 // Initialize Express.js server
 const app = express();
@@ -143,8 +143,8 @@ app.get('/api/labeldata', async (req, res) => {
   console.log("loading data for labels");
   if (latestData && row) {
     const labelData = {
-      regenerativePercentage: Math.floor(Math.random() * 100),
-      co2Emissions: Math.floor(Math.random() * 1000)
+      regenerativePercentage: get_total_regenerative_percentage(latestData),
+      co2Emissions: get_total_emissions(latestData)
     }
     res.json(labelData);
   } else {
