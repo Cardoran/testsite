@@ -12,7 +12,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
             throw new Error("404: API endpoint not found");
         }
 
-        const data = reduceDatapoints(response.data);
+        const data = response.data;
         const time = data.unix_seconds;//.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
 
         const dataDict = { unix_seconds: time };
