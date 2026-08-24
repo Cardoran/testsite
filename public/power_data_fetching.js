@@ -9,6 +9,9 @@ async function collectData() {
     // await fetch('/updateLatestData', {startDate:startInput, endDate:endInput});
     await fetch(`updateLatestData?startDate=${startInput}&endDate=${endInput}`);
 
+    fetchPieData();
+    fetchGraphData();
+    fetchLabelData();
 }
 async function fetchPieData() {
     try {
@@ -139,9 +142,6 @@ async function fetchLabelData() {
 }
 function fetchData() {
     collectData();
-    fetchPieData();
-    fetchGraphData();
-    fetchLabelData();
 }
 
 // Fetch data immediately
