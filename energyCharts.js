@@ -98,7 +98,7 @@ export function getLastFullRow(df) {
 }
 
 export function reduceDatapoints(df) {
-    console.log(`Fetching data from ${url}...`);
+    console.log(`Reducing datapoints`);
     try {
         if (df.unix_seconds.length <= 3000) {
             return df;
