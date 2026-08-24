@@ -12,7 +12,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
             throw new Error("404: API endpoint not found");
         }
 
-        const data = response.data;
+        const data = reduceDatapoints(response.data);
         const time = data.unix_seconds;//.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
 
         const dataDict = { unix_seconds: time };
@@ -105,9 +105,10 @@ export function reduceDatapoints(df) {
         } else {
             size = Math.ceil(df.unix_seconds.length/3000);
             // console.log(dataDict);
-            return df.forEach((arr) => arr.filter((_, i) => i % size === 0)
-                .map((_, i) => arr.slice(i * size, i * size + size)
-                                .reduce((a, b) => a + b, 0)
+            return Object.keys(df).forEach((key) => 
+                df[key] = df[key].filter((_, i) => i % size === 0)
+                                .map((_, i) => df[key].slice(i * size, i * size + size)
+                                                .reduce((a, b) => a + b, 0)
             ));
         }
     } catch (error) {
