@@ -107,11 +107,12 @@ export function reduceDatapoints(df) {
         } else {
             size = Math.ceil(df.unix_seconds.length/3000);
             // console.log(dataDict);
-            return Object.keys(df).forEach((key) => 
+            Object.keys(df).forEach((key) => 
                 df[key] = df[key].filter((_, i) => i % size === 0)
                                 .map((_, i) => df[key].slice(i * size, i * size + size)
                                                 .reduce((a, b) => a + b, 0)
             ));
+            return df;
         }
     } catch (error) {
         console.error(`Error fetching data: ${error.message}`);
