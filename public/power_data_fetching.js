@@ -8,8 +8,6 @@ async function collectData() {
     console.log(startInput,endInput);
     // await fetch('/updateLatestData', {startDate:startInput, endDate:endInput});
     await fetch(`updateLatestData?startDate=${startInput}&endDate=${endInput}`);
-    fetchPieData();
-    fetchGraphData();
 
 }
 async function fetchPieData() {
@@ -122,17 +120,28 @@ async function fetchGraphData() {
     } catch (error) {
     console.error('Error:', error);
     }
-    
-    // Dummy data for demonstration
-    const regenerativePercentage = Math.floor(Math.random() * 100); // Random value for demo
-    const co2Emissions = Math.floor(Math.random() * 1000); // Random value for demo
+}
+async function fetchLabelData() {
+    try {
+        const response = await fetch('/api/labeldata');
+        const labeldata = await response.json();
 
-    // Update the results
-    document.getElementById("regenerativePercentage").textContent = `${regenerativePercentage}%`;
-    document.getElementById("co2Emissions").textContent = `${co2Emissions} kg`;
+        // Dummy data for demonstration
+        const regenerativePercentage = labeldata.regenerativePercentage; // Random value for demo
+        const co2Emissions = labeldata.co2Emissions; // Random value for demo
+
+        // Update the results
+        document.getElementById("regenerativePercentage").textContent = `${regenerativePercentage}%`;
+        document.getElementById("co2Emissions").textContent = `${co2Emissions} kg`;
+    } catch (error) {
+    console.error('Error:', error);
+    }
 }
 function fetchData() {
     collectData();
+    fetchPieData();
+    fetchGraphData();
+    fetchLabelData();
 }
 
 // Fetch data immediately

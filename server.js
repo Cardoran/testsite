@@ -139,6 +139,18 @@ app.get('/api/piedata', async (req, res) => {
     res.status(503).send("No data available yet.");
   }
 });
+app.get('/api/labeldata', async (req, res) => {
+  console.log("loading data for labels");
+  if (latestData && row) {
+    const labelData = {
+      regenerativePercentage: Math.floor(Math.random() * 100),
+      co2Emissions: Math.floor(Math.random() * 1000)
+    }
+    res.json(labelData);
+  } else {
+    res.status(503).send("No data available yet.");
+  }
+});
 
 
 // Handle SIGTERM for graceful shutdown
