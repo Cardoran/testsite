@@ -16,10 +16,10 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
         const time = data.unix_seconds;//.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
 
         const dataDict = { unix_seconds: time };
-        console.log(dataDict)
         data.production_types.forEach(type => {
             dataDict[type.name] = type.data;
         });
+        console.log(dataDict)
 
         // Calculate derived columns
         dataDict["Cross border electricity export"] = dataDict["Cross border electricity trading"].map(x => x < 0 ? x : 0);
