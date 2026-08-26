@@ -58,7 +58,6 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
         // console.log(dataDict);
         return dataDict;
     } catch (error) {
-        b
         console.error(`Error fetching data: ${error.message}`);
         throw error;
     }
@@ -116,7 +115,6 @@ export function reduceDatapoints(df) {
             return df;
         }
     } catch (error) {
-        a
         console.error(`Error reducing data: ${error.message}`);
         throw error;
     }
