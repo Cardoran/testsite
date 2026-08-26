@@ -27,7 +27,6 @@ app.get('/updateLatestData', async (req, res) => {
         console.log(emissions);
         console.log("Data updated successfully.");
     } catch (error) {
-      c
         console.error("Failed to update data:", error.message);
     }
   res.json([]);

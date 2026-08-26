@@ -58,7 +58,6 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
         // console.log(dataDict);
         return dataDict;
     } catch (error) {
-        b
         console.error(`Error fetching data: ${error.message}`);
         throw error;
     }
@@ -117,7 +116,7 @@ export function reduceDatapoints(df) {
         }
     } catch (error) {
         a
-        console.error(`Error fetching data: ${error.message}`);
+        console.error(`Error reducing data: ${error.message}`);
         throw error;
     }
 }
@@ -156,11 +155,12 @@ export function get_total_emissions(df) {
 }
 
 export function get_total_regenerative_percentage(df) {
-    const other_labels = ["Cross border electricity export", "Hydro pumped storage consumption",
+    const other_labels = ["Cross border electricity export",
         "Cross border electricity import", "Others", 
         "Fossil coal","Fossil oil and gas",
     ]
-    const regen_labels = ["Hydro","Waste, Biomass and Geothermal","Wind","Solar"
+    const regen_labels = ["Hydro","Hydro pumped storage consumption",
+        "Waste, Biomass and Geothermal","Wind","Solar"
     ]
 
     const sum_labels = (labels) => labels.reduce((total,label) => 
