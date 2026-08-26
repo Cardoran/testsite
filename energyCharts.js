@@ -107,9 +107,8 @@ export function reduceDatapoints(df) {
         } else {
             const size = Math.ceil(df.unix_seconds.length/3000);
             // console.log(dataDict);
-            Object.keys(df).forEach((key) => console.log(key + "," + df[key]))
             Object.keys(df).forEach((key) => 
-                df[key] = (df[key]).filter((_, i) => i % size === 0)
+                df[key] = Object.values(df[key]).filter((_, i) => i % size === 0)
                                 .map((_, i) => df[key].slice(i * size, i * size + size)
                                                 .reduce((a, b) => a + b, 0)
             ));
