@@ -58,6 +58,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
         // console.log(dataDict);
         return dataDict;
     } catch (error) {
+        b
         console.error(`Error fetching data: ${error.message}`);
         throw error;
     }
