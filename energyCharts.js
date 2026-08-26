@@ -105,7 +105,7 @@ export function reduceDatapoints(df) {
         if (df.unix_seconds.length <= 3000) {
             return df;
         } else {
-            size = Math.ceil(df.unix_seconds.length/3000);
+            const size = Math.ceil(df.unix_seconds.length/3000);
             // console.log(dataDict);
             Object.keys(df).forEach((key) => 
                 df[key] = df[key].filter((_, i) => i % size === 0)
