@@ -60,6 +60,24 @@
       visibility: visible;
       opacity: 1;
     }
+    .chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      height: 400px; /* or whatever height you want */
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background: white;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    /* For mobile screens */
+    @media (max-width: 768px) {
+        .chart-container {
+            height: 300px;
+        }
+    }
   </style>
 </head>
 <body>
@@ -72,8 +90,8 @@
               <a href="#">Contact</a>
           </nav>
       </div>
-  </header>
-  <main>
+</header>
+<main>
   <div class="button-container">
     <label for="start">Start Date:</label>
     <input type="text" id="start" name="start" placeholder="Select start date">
@@ -83,14 +101,15 @@
 
     <button id="updateRangeButton" style="margin-left: 10px;">Update Range</button>
   </div>
-    <div class="chart-container">
-      <div style="float: left; width:20%;">
+
+  <div class="chart-container">
+    <div style="float: left; width:20%;">
         <canvas id="pieChart" style="width:100%;"></canvas>
-      </div>
-      <div style="float: left; width:70%;">
+    </div>
+    <div style="float: left; width:70%;">
         <canvas id="graphChart" style="width:100%;"></canvas>
-      </div>
-      <div class="results-container">
+    </div>
+    <div class="results-container">
         <div class="result-box regenerative tooltip">
           <i class="fas fa-leaf"></i>
           <span id="regenerativePercentage">--</span>
@@ -101,9 +120,9 @@
           <span id="co2Emissions">--</span>
           <span class="tooltiptext">CO₂ emissions (dummy text)</span>
         </div>
-      </div>
     </div>
-  </main>
+  </div>
+</main>
 
   <!-- Include Chart.js from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
