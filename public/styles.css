@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    font-size: 4vw;
+    font-size: clamp(14px, 2vw + 12px, 18px);
 }
 
 .header {
