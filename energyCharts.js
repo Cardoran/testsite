@@ -13,13 +13,12 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
         }
 
         const data = response.data;
-        const time = data.unix_seconds;//.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
+        const time = reduceDatapoints(data.unix_seconds);//.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
 
         const dataDict = { unix_seconds: time };
         data.production_types.forEach(type => {
-            dataDict[type.name] = type.data;
+            dataDict[type.name] = reduceDatapoints(type.data);
         });
-        dataDict = reduceDatapoints(dataDict);
         console.log(dataDict)
 
         // Calculate derived columns
@@ -99,22 +98,18 @@ export function getLastFullRow(df) {
     }
 }
 
-export function reduceDatapoints(df) {
+export function reduceDatapoints(datarow) {
     console.log(`Reducing datapoints`);
     // console.log(df.unix_seconds.length)
     try {
-        if (df.unix_seconds.length <= 3000) {
-            return df;
+        if (datarow.length <= 3000) {
+            return datarow;
         } else {
-            const data = { unix_seconds: df.unix_seconds };
-            const size = Math.ceil(df.unix_seconds.length/3000);
-            // console.log(dataDict);
-            Object.keys(df).forEach((key) => 
-                data[key] = Object.values(df[key]).filter((_, i) => i % size === 0)
-                                .map((_, i) => df[key].slice(i * size, i * size + size)
-                                                .reduce((a, b) => a + b, 0)
-            ));
-            return data;
+            const size = Math.ceil(datarow.length/3000);
+            return Object.values(datarow).filter((_, i) => i % size === 0)
+                                .map((_, i) => datarow.slice(i * size, i * size + size)
+                                                .reduce((a, b) => a + b, 0));
+
         }
     } catch (error) {
         console.error(`Error reducing data: ${error.message}`);
