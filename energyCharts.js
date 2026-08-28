@@ -12,13 +12,13 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
             throw new Error("404: API endpoint not found");
         }
 
-        const data = reduceDatapoints(response.data);
         const time = data.unix_seconds;//.map(timestamp => DateTime.fromSeconds(timestamp).toJSDate());
 
         const dataDict = { unix_seconds: time };
         data.production_types.forEach(type => {
             dataDict[type.name] = type.data;
         });
+        dataDict = reduceDatapoints(response.data);
         console.log(dataDict)
 
         // Calculate derived columns
