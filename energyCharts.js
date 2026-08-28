@@ -100,19 +100,20 @@ export function getLastFullRow(df) {
 
 export function reduceDatapoints(df) {
     console.log(`Reducing datapoints`);
-    console.log(df.unix_seconds.length)
+    // console.log(df.unix_seconds.length)
     try {
         if (df.unix_seconds.length <= 3000) {
             return df;
         } else {
+            const data = { unix_seconds: time };
             const size = Math.ceil(df.unix_seconds.length/3000);
             // console.log(dataDict);
             Object.keys(df).forEach((key) => 
-                df[key] = Object.values(df[key]).filter((_, i) => i % size === 0)
+                data[key] = Object.values(df[key]).filter((_, i) => i % size === 0)
                                 .map((_, i) => df[key].slice(i * size, i * size + size)
                                                 .reduce((a, b) => a + b, 0)
             ));
-            return df;
+            return data;
         }
     } catch (error) {
         console.error(`Error reducing data: ${error.message}`);

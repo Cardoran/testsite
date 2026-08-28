@@ -64,7 +64,8 @@ app.get('/api/graphdata', async (req, res) => {
             ),
             borderColor: colors[index],
             backgroundColor: colors[index],
-            fill: true})
+            fill: true,
+            stacked: true})
         )
     };
     // console.log(data);
