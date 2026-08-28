@@ -18,7 +18,7 @@ export async function getPublicPower(country = "de", start = "2025-03-16 00:00",
         data.production_types.forEach(type => {
             dataDict[type.name] = type.data;
         });
-        dataDict = reduceDatapoints(response.data);
+        dataDict = reduceDatapoints(dataDict);
         console.log(dataDict)
 
         // Calculate derived columns
