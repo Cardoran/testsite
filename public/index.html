@@ -60,17 +60,24 @@
       visibility: visible;
       opacity: 1;
     }
+    .piechart-container {
+      height: 400vh;
+    }
+    .graphchart-container {
+      height: 600vh;
+    }
     .chart-container {
       position: relative;
-      width: 80%;
-      max-width: 80%;
-      height: 600px; /* or whatever height you want */
+      width: 100%;
+      max-width: 100%;
       margin: 0 auto;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       background: white;
       padding: 10px;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
     }
     /* For mobile screens */
     @media (max-width: 768px) {
@@ -92,7 +99,7 @@
       </div>
 </header>
 <main>
-  <div class="button-container">
+  <div class="button-container graphchart-container">
     <label for="start">Start Date:</label>
     <input type="text" id="start" name="start" placeholder="Select start date">
 
@@ -108,7 +115,7 @@
     </div>
   </div>
   
-  <div class="chart-container">
+  <div class="chart-container piechart-container">
     <div style="float: left; width:20%;">
         <canvas id="pieChart" style="width:100%;"></canvas>
     </div>
