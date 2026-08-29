@@ -26,7 +26,7 @@
         <!-- Controls & Results -->
         <section class="card">
             <div class="card-header">
-                <h2>Analysis Controls</h2>
+                <h2>Control Panel</h2>
             </div>
 
             <div class="controls-wrapper">
@@ -71,53 +71,26 @@
         <!-- Charts -->
         <section class="card">
             <div class="card-header">
-                <h2>Energy Overview</h2>
+                <h2>Energy Mix Over Time</h2>
             </div>
 
             <div class="charts-grid">
-
                 <div class="chart-box">
                     <canvas id="graphChart"></canvas>
                 </div>
+            </div>
+        </section>
+        <section class="card">
+            <div class="card-header">
+                <h2>Analysis of Current Energy Mix</h2>
+            </div>
 
+            <div class="charts-grid">
                 <div class="chart-box">
                     <canvas id="pieChart"></canvas>
                 </div>
-
             </div>
         </section>
-<!-- 
-        <div class="button-container">
-            <label for="start">Start Date:</label>
-            <input type="text" id="start" name="start" placeholder="Select start date">
-
-            <label for="end" style="margin-left: 10px;">End Date:</label>
-            <input type="text" id="end" name="end" placeholder="Select end date">
-
-            <button id="updateRangeButton" style="margin-left: 10px;">Update Range</button>
-        </div>
-
-        <div class="chart-container graphchart-container">
-            <canvas id="graphChart" style="width:100%;"></canvas>
-        </div>
-        
-        <div class="chart-container piechart-container">
-            <div class="piechart-container">
-                <canvas id="pieChart" style="width:100%;"></canvas>
-            </div>
-            <div class="results-container">
-                <div class="result-box regenerative tooltip">
-                    <i class="fas fa-leaf"></i>
-                    <span id="regenerativePercentage">--</span>
-                    <span class="tooltiptext">Regenerative power percentage (dummy text)</span>
-                </div>
-                <div class="result-box co2 tooltip">
-                    <span class="co2-logo">CO₂</span>
-                    <span id="co2Emissions">--</span>
-                    <span class="tooltiptext">CO₂ emissions (dummy text)</span>
-                </div>
-            </div>
-        </div> -->
     </main>
 
     <!-- Include Chart.js from CDN -->
