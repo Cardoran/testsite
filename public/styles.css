@@ -244,7 +244,7 @@ button:hover {
     transition: padding 0.3s ease, background-color 0.3s ease;
 }
 
-.header.scrolled {
+.header.is-scrolled {
     padding: 10px 0;
     background-color: #222;
 }
